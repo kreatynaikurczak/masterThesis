@@ -21,6 +21,6 @@
     it
     v(1em)
   }
-
+  set heading(numbering: "1.1.")
   body
 }

@@ -1,3 +1,10 @@
 = Wstęp
 <wstep>
-// Miejsce na streszczenie w języku polskim i angielskim
+
+== Cel pracy
+<cel-pracy>
+Celem niniejszej pracy dyplomowej jest...
+
+== Zakres pracy
+<zakres-pracy>
+Zakres pracy obejmuje...
