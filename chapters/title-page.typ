@@ -14,7 +14,7 @@
     columns: (80pt, 1fr, 80pt),
     align: (left + horizon, center + horizon, right + horizon),
     stroke: none,
-    image("../media/logo_pk.png", width: 100%),
+    image("../media/title-page/logo_pk.png", width: 100%),
     [
       #strong[POLITECHNIKA KRAKOWSKA \ im. T. Kościuszki] \
       #v(3pt)
@@ -22,7 +22,7 @@
       #v(3pt)
       #strong[Katedra #katedra]
     ],
-    image("../media/logo_wieik.png", width: 100%),
+    image("../media/title-page/logo_wieik.png", width: 100%),
   )
 
   align(center)[

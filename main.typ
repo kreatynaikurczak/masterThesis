@@ -1,5 +1,5 @@
 #import "template.typ": setup
-#import "chapters/titlePage.typ": title-page
+#import "chapters/title-page.typ": title-page
 
 #show: setup
 
