@@ -2,7 +2,7 @@
 #include "front-matter/keywords.typ"
 #include "front-matter/symbols.typ"
 #include "01-wstep.typ"
-#include "02-podstawy-teoretyczne copy.typ"
+#include "02-podstawy-teoretyczne.typ"
 #include "03-praca-wlasna.typ"
 #include "04-sumarry.typ"
 #include "front-matter/bibligraphy.typ"
