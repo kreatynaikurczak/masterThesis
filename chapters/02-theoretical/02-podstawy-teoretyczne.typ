@@ -4,10 +4,10 @@
 == System Home Assistant
 <home-assistant>
 #include "home-assistant/home-assistant.typ"
- 
 
-== Przegląd rozwiazań panujących obecnie na rynku
-<przeglad-rozwiazan-panujacych-obecnie-na-rynku>
+
+== Rozwiązania sprzętowe dla Home Assistant
+<rozwiazania-sprzetowe>
 #include "02-overview-of-solutions/overview-of-solutions.typ"
 
 == Protokół MQTT
