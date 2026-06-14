@@ -1,7 +1,10 @@
 = Praca własna
 <praca-wlasna>
 
-#include "01-debian-instalation/debian-instalation.typ"
+== Przygoowanie srodowiska serwerewogo
+<przygotowanie-srodowiska-serwerowego>
+
+#include "instalation/01-debian-instalation/debian-instalation.typ"
 
 == Uruchomienie brokera MQTT
 <uruchomienie-brokera-MQTT>
