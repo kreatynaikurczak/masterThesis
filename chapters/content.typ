@@ -3,6 +3,6 @@
 #include "front-matter/symbols.typ"
 #include "01-wstep/01-wstep.typ"
 #include "02-theoretical/02-podstawy-teoretyczne.typ"
-#include "03-praca-wlasna/03-praca-wlasna.typ"
+#include "03-praca-wlasna//03-praca-wlasna.typ"
 #include "04-summary/04-summary.typ"
 #include "front-matter/bibligraphy.typ"

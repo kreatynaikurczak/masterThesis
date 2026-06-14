@@ -1,9 +1,7 @@
 = Praca własna
 <praca-wlasna>
 
-== Stworzenie serwera
-<przeglad-rozwiazan-panujacych-obecnie-na-rynku>
-...
+#include "01-debian-instalation/debian-instalation.typ"
 
 == Uruchomienie brokera MQTT
 <uruchomienie-brokera-MQTT>
