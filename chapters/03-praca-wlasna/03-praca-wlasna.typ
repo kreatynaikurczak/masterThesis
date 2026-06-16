@@ -1,7 +1,12 @@
-= Praca własna
-<praca-wlasna>
+= Implementacja projektu i realizacja systemu
+<implementacja-projektu-i-realizacja-systemu>
 
-== Przygoowanie srodowiska serwerewogo
+== Ogólna architektura systemu
+<ogolna-architektura-systemu>
+
+#include "GlobalArchitectureOverview/globalArchitectureOverview.typ"
+
+== Przygotowanie środowiska serwerowego
 <przygotowanie-srodowiska-serwerowego>
 
 #include "instalation/01-debian-instalation/debian-instalation.typ"
@@ -14,7 +19,8 @@
 
 == Postawienie Home Assistant
 <postawienie-home-assistant>
-...
+
+#include "instalation/04-home-assistant-instalation/home-assistant-install.typ"
 
 == Analiza ruchu sieciowego
 <analiza-ruchu-sieciowego>
