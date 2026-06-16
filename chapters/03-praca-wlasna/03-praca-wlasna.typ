@@ -22,6 +22,9 @@
 
 #include "instalation/04-home-assistant-instalation/home-assistant-install.typ"
 
-== Analiza ruchu sieciowego
-<analiza-ruchu-sieciowego>
-...
+== Węzeł sensorowy i analiza ruchu
+<wezel-sensorowy-i-analiza-ruchu>
+
+#include "Node1SensorTelemetryFirmware/node1.typ"
+
+//#include "NetworkAnalysis/networkAnalysis.typ"
