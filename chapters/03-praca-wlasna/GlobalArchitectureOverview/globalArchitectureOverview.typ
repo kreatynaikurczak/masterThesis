@@ -4,10 +4,10 @@ W niniejszym rozdziale przedstawiono szczegółowy opis implementacji systemu au
 
 Projektowany system opiera się na trójwarstwowym modelu architektury rozproszonej, który zapewnia skalowalność oraz łatwość w rozbudowie o kolejne węzły sensorowe i wykonawcze. Na rysunku X przedstawiono schemat ideowy połączeń między kluczowymi elementami systemu.
 
-// #figure(
-//   image("images/system_architecture.png", width: 80%),
-//   caption: [Ogólny schemat architektury systemu.],
-// ) <architektura-ogolna>
+#figure(
+  image("images/system_architecture.png", width: 80%),
+  caption: [Ogólny schemat architektury systemu.],
+) <architektura-ogolna>
 
 Wyróżnić można następujące warstwy:
 1. *Warstwa fizyczna (sprzętowa):* Składa się z mikrokontrolerów rodziny ESP32, które pełnią rolę węzłów pomiarowych (zbieranie danych z czujników temperatury, wilgotności itp.) oraz węzłów wykonawczych (sterowanie przekaźnikami, oświetleniem).
