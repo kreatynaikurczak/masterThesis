@@ -6,6 +6,12 @@ Węzeł nazwany roboczo *Node-1* stanowi kluczowy element wykonawczy warstwy fiz
 === Architektura i wybór komponentów
 
 Sercem urządzenia jest układ **ESP32 DevKit V1**, który został wybrany ze względu na zintegrowany moduł Wi-Fi oraz niskie zużycie energii. Choć docelowo system przewiduje wykorzystanie czujników fizycznych (takich jak BME280), na obecnym etapie zaimplementowano generator sygnałów oparty na funkcjach matematycznych. Takie podejście pozwoliło na:
+
+#figure(
+  image("images/esp32.png", width: 60%),
+  caption: [Układ ESP32 DevKit V1],
+) <fig-esp32>
+
 - niezależną weryfikację stabilności połączenia sieciowego i sesji MQTT,
 - testowanie reakcji systemu Home Assistant na dynamiczne zmiany wartości w pełnym zakresie,
 - eliminację błędów wynikających z potencjalnych problemów sprzętowych na etapie tworzenia szkieletu oprogramowania.
