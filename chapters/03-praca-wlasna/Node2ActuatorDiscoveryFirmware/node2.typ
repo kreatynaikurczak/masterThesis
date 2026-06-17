@@ -17,25 +17,28 @@ Jako platformę sprzętową dla tego węzła wybrano mikrokontroler **ESP32-C3 D
 Kluczowym elementem logiki komunikacyjnej Node-2 jest pełna separacja tematów sterujących od tematów raportujących stan. Zastosowano architekturę dwukierunkową, aby zapobiec pętlom logicznym oraz zagwarantować bezwzględną synchronizację między stanem faktycznym sprzętu a interfejsem użytkownika.
 
 W systemie zdefiniowano dwa główne kanały dla każdej encji wykonawczej (np. przekaźnika):
-- **Temat poleceń (`cmnd/node-2/relay1/set`):** Służy wyłącznie do przesyłania żądań zmiany stanu z Home Assistant do węzła.
-- **Temat stanu (`stat/node-2/relay1/state`):** Służy do raportowania przez węzeł aktualnego potwierdzonego stanu urządzenia.
+- **Temat poleceń (`esp32/actuator/set`):** Służy wyłącznie do przesyłania żądań zmiany stanu z Home Assistant do węzła.
+- **Temat stanu (`esp32/actuator/state`):** Służy do raportowania przez węzeł aktualnego potwierdzonego stanu urządzenia.
 
 Dzięki takiemu podejściu, interfejs użytkownika aktualizuje status urządzenia dopiero po otrzymaniu potwierdzenia z mikrokontrolera. Eliminuje to błędy typu "ghost switching", gdzie ikona w aplikacji zmienia stan mimo braku fizycznej reakcji urządzenia (np. z powodu chwilowej utraty zasięgu Wi-Fi).
 
 === Mechanizm MQTT Self-Discovery
 
-Węzeł Node-2 implementuje standard **Home Assistant MQTT Discovery**, co pozwala na całkowitą eliminację konieczności ręcznej edycji plików konfiguracyjnych w systemie nadrzędnym. Natychmiast po uruchomieniu i nawiązaniu połączenia z siecią, mikrokontroler wysyła ramkę konfiguracyjną w formacie JSON na specjalny temat odkrywania (`homeassistant/switch/node-2/config`).
+Węzeł Node-2 implementuje standard **Home Assistant MQTT Discovery**, co pozwala na całkowitą eliminację konieczności ręcznej edycji plików konfiguracyjnych w systemie nadrzędnym. Natychmiast po uruchomieniu i nawiązaniu połączenia z siecią, mikrokontroler wysyła ramkę konfiguracyjną w formacie JSON na specjalny temat odkrywania (`homeassistant/switch/esp32_heater_actuator/config`).
 
 Poniżej przedstawiono przykładowy ładunek danych (payload) generowany przez węzeł podczas procesu autowykrywania:
 
 ```json
 {
-  "name": "Wentylator Biuro",
-  "unique_id": "node-2_relay_1",
-  "command_topic": "cmnd/node-2/relay1/set",
-  "state_topic": "stat/node-2/relay1/state",
+  "name": "Heater Actuator",
+  "unique_id": "esp32_heater_actuator",
+  "command_topic": "esp32/actuator/set",
+  "state_topic": "esp32/actuator/state",
   "payload_on": "ON",
   "payload_off": "OFF",
+  "state_on": "ON",
+  "state_off": "OFF",
+  "icon": "mdi:radiator",
   "device": {
     "identifiers": ["esp32c3_8291AB"],
     "name": "Node-2 Actuator Engine",
@@ -50,8 +53,8 @@ Dzięki przesłaniu metadanych takich jak model urządzenia czy producent, Home 
 === Logika operacyjna i synchronizacja
 
 Proces obsługi polecenia przez Node-2 przebiega w następujących krokach:
-1. **Odbiór:** Węzeł subskrybuje temat `cmnd/#`. Po otrzymaniu wiadomości `"ON"`, następuje wysterowanie odpowiedniego pinu GPIO.
+1. **Odbiór:** Węzeł subskrybuje temat `esp32/actuator/#`. Po otrzymaniu wiadomości `"ON"`, następuje wysterowanie odpowiedniego pinu GPIO.
 2. **Weryfikacja:** System sprawdza stan logiczny wyjścia.
-3. **Potwierdzenie:** Węzeł publikuje aktualny stan na temat `stat/...`.
+3. **Potwierdzenie:** Węzeł publikuje aktualny stan na temat `esp32/actuator/state`.
 
 Zastosowanie flagi **Retain** dla komunikatów stanu pozwala na natychmiastowe odzyskanie poprawnego statusu urządzenia przez Home Assistant nawet po restarcie serwera, co zwiększa ogólną niezawodność całego ekosystemu IoT.
