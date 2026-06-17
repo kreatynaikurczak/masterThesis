@@ -36,7 +36,7 @@ Gdzie $T_"offset"$ to temperatura bazowa, $A$ to amplituda zmian, a $omega$ okre
 Algorytm w każdym kroku wykonuje następujące czynności:
 1. **Łączność:** Sprawdzenie stanu połączenia Wi-Fi i brokera MQTT.
 2. **Generowanie danych:** Wyznaczenie kolejnej wartości funkcji sinus dla temperatury oraz analogicznych wartości dla wilgotności i ciśnienia.
-3. **Publikacja:** Dane są pakowane do obiektu JSON i wysyłane na temat: `tele/node-1/sensor`. Przykład wysyłanej ramki danych:
+3. **Publikacja:** Dane są pakowane do obiektu JSON i wysyłane na temat: `esp32/temperature`. Przykład wysyłanej ramki danych:
 ```json
 {
   "temperature": 22.5,
@@ -54,11 +54,13 @@ Pomimo zastosowania danych symulowanych, od strony systemu Home Assistant węze�
 ```yaml
 mqtt:
   sensor:
-    - name: "Symulowana Temperatura"
-      state_topic: "tele/node-1/sensor"
+    - name: "Tenperature Sensor"
+      state_topic: "esp32/temperature"
+      icon: "mdi:microcontroller"
       unit_of_measurement: "°C"
       value_template: "{{ value_json.temperature }}"
-      device_class: temperature
+      device_class: "temperature"
+      unique_id: "esp32_simulated_temp"
 
     - name: "Status Grzejnika"
       state_topic: "esp32/actuator/heater"
