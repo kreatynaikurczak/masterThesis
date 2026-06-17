@@ -47,16 +47,6 @@ Algorytm w każdym kroku wykonuje następujące czynności:
 ```
 4. **Oczekiwanie:** Węzeł odczekuje zdefiniowany interwał (np. 30 sekund) przed kolejną iteracją.
 
-=== Implementacja logiki sterowania (Termostat)
-
-Istotnym rozszerzeniem funkcjonalności węzła Node-1 jest zaimplementowanie lokalnej logiki decyzyjnej, która pozwala na autonomiczną reakcję urządzenia na zmiany parametrów środowiskowych. Węzeł pełni rolę prostego termostatu, monitorując wygenerowaną temperaturę i sterując wirtualnym elementem grzejnym.
-
-Logika sterowania opiera się na zdefiniowanym progu temperatury `TEMP_THRESHOLD`, ustawionym na poziomie **20°C**. Proces decyzyjny przebiega następująco:
-- Jeśli temperatura spadnie poniżej 20°C, węzeł publikuje komunikat `"ON"` na temat: `esp32/actuator/heater`.
-- Jeśli temperatura wzrośnie powyżej lub zrówna się z 20°C, publikowany jest komunikat `"OFF"`.
-
-W celu optymalizacji ruchu sieciowego oraz uniknięcia nadmiarowego obciążenia brokera MQTT, zastosowano mechanizm wykrywania zmiany stanu (*state change detection*). Polecenie sterujące jest wysyłane tylko w momencie, gdy następuje faktyczne przejście między stanem włączenia a wyłączenia. Dzięki temu, mimo ciągłego monitorowania temperatury w każdym cyklu, ramki sterujące publikowane są jedynie w punktach krytycznych sygnału sinus.
-
 === Integracja z Home Assistant
 
 Pomimo zastosowania danych symulowanych, od strony systemu Home Assistant węzeł jest widziany jako rzeczywiste urządzenie pomiarowe. W pliku `configuration.yaml` zdefiniowano encje typu `sensor`, które interpretują przychodzące ramki JSON.

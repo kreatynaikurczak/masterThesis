@@ -7,6 +7,11 @@ Drugi zaimplementowany węzeł, nazwany *Node-2*, reprezentuje bardziej zaawanso
 
 Jako platformę sprzętową dla tego węzła wybrano mikrokontroler **ESP32-C3 DevKit**, oparty na otwartej architekturze RISC-V. Wybór ten podyktowany był chęcią przetestowania nowoczesnego standardu układów ESP, które oferują zoptymalizowany pobór mocy oraz wsparcie dla najnowszych mechanizmów bezpieczeństwa przy zachowaniu pełnej kompatybilności z ekosystemem Wi-Fi i MQTT.
 
+#figure(
+  image("images/ESP32_C3_MINI-8.jpg", width: 60%),
+  caption: [Mikrokontroler ESP32-C3 wykorzystany w module Node-2],
+) <fig-node2-esp32>
+
 === Separacja tematów: Polecenia a stan (Command vs State)
 
 Kluczowym elementem logiki komunikacyjnej Node-2 jest pełna separacja tematów sterujących od tematów raportujących stan. Zastosowano architekturę dwukierunkową, aby zapobiec pętlom logicznym oraz zagwarantować bezwzględną synchronizację między stanem faktycznym sprzętu a interfejsem użytkownika.
