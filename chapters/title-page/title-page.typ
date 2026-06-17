@@ -1,14 +1,14 @@
 #let title-page(
   katedra: "..................................",
-  kierunek: "..........................",
+  kierunek: "Infotronika",
   specjalnosc: "……………………………..",
   typ-studiów: "STACJONARNE",
-  stopien: "INŻYNIERSKA / MAGISTERSKA",
-  autor: "Imię NAZWISKO",
-  temat-pl: "TEMAT PRACY (w języku polskim)",
-  temat-en: "TEMAT PRACY (w języku angielskim)",
-  opiekun: "Imię i nazwisko opiekuna pracy",
-  rok: "20……..",
+  stopien: "MAGISTERSKA",
+  autor: "Michał Filipiak",
+  temat-pl: "Projekt i implementacja serwerowego systemu automatyki domowej opartego na mikrokontrolerach ESP oraz protokole MQTT",
+  temat-en: "Design and implementation of a server home automation system based on ESP microcontrollers and the MQTT protocol",
+  opiekun: "dr inż. Paweł Król",
+  rok: "2026",
 ) = {
   grid(
     columns: (80pt, 1fr, 80pt),
