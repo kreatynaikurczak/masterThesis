@@ -2,7 +2,7 @@ W niniejszym rozdziale przedstawiono szczegółowy opis implementacji systemu au
 
 === Model architektury systemu
 
-Projektowany system opiera się na trójwarstwowym modelu architektury rozproszonej, który zapewnia skalowalność oraz łatwość w rozbudowie o kolejne węzły sensorowe i wykonawcze. Na rysunku X przedstawiono schemat ideowy połączeń między kluczowymi elementami systemu.
+Projektowany system opiera się na trójwarstwowym modelu architektury rozproszonej, który zapewnia skalowalność oraz łatwość w rozbudowie o kolejne węzły sensorowe i wykonawcze. Na rysunku poniżej przedstawiono schemat ideowy połączeń między kluczowymi elementami systemu.
 
 #figure(
   image("images/system_architecture.png", width: 80%),
