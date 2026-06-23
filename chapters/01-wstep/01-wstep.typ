@@ -3,13 +3,41 @@
 
 == Wprowadzenie
 <wprowadzenie>
-W dzisiejszych czasach, wraz z dynamicznym rozwojem technologii i globalizacji, wiele dziedzin życia ulega znaczącym zmianom. Wprowadzenie nowych technologii, zmiany społeczne oraz rosnące wymagania stawiane przed jednostkami i organizacjami sprawiają, że konieczne jest ciągłe dostosowywanie się do nowych warunków. W tym kontekście, niniejsza praca dyplomowa ma na celu zbadanie i analizę wybranych aspektów związanych z tymi zmianami, a także przedstawienie propozycji rozwiązań i rekomendacji, które mogą przyczynić się do lepszego zrozumienia i efektywnego radzenia sobie z wyzwaniami współczesnego świata.
+Dynamiczny rozwój Internetu Rzeczy (ang. _Internet of Things_, IoT) sprawia, że inteligentne systemy zarządzania budynkiem -- znane pod zbiorczą nazwą Smart Home -- stają się coraz powszechniejszym elementem współczesnego życia. Urządzenia zdolne do komunikacji sieciowej, autonomicznego zbierania danych i reagowania na polecenia użytkownika są dostępne w szerokiej gamie cenowej, a ich liczba rośnie w tempie wykładniczym. Towarzyszy temu jednak istotne wyzwanie: fragmentacja ekosystemu producentów, brak jednolitych standardów interoperacyjności oraz rosnące zagrożenia w obszarze cyberbezpieczeństwa.
+
+Odpowiedzią na te problemy jest platforma Home Assistant -- otwarte oprogramowanie, które pełni rolę centralnego huba inteligentnego domu, integrując urządzenia od setek producentów w jednym, spójnym interfejsie i przechowując dane lokalnie, bez uzależnienia od zewnętrznych chmur. Kluczową rolę w komunikacji między urządzeniami odgrywa protokół MQTT (ang. _Message Queuing Telemetry Transport_), zaprojektowany z myślą o środowiskach o ograniczonych zasobach i niskiej przepustowości -- cechach charakterystycznych dla mikrokontrolerów ESP32 stosowanych w węzłach pomiarowych i wykonawczych.
+
+Niniejsza praca podejmuje zagadnienie projektowania i implementacji kompletnego, działającego lokalnie systemu automatyki domowej opartego na tych technologiach, a następnie analizuje jego bezpieczeństwo sieciowe w warunkach zbliżonych do rzeczywistego wdrożenia.
 
 == Cel i zakres pracy
 <cel-pracy>
-Celem niniejszej pracy dyplomowej jest...
+Głównym celem niniejszej pracy dyplomowej jest zaprojektowanie, implementacja i weryfikacja bezpieczeństwa serwerowego systemu automatyki domowej opartego na mikrokontrolerach z rodziny ESP oraz protokole MQTT, zintegrowanego z platformą Home Assistant.
+
+Cel główny realizowany jest przez następujące cele szczegółowe:
+
++ *Przegląd i dobór technologii* -- analiza dostępnych platform automatyki domowej, protokołów komunikacyjnych i rozwiązań sprzętowych pod kątem ich przydatności do realizacji systemu działającego lokalnie, bez zależności od zewnętrznej infrastruktury chmurowej.
+
++ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker, wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant jako centralnego systemu zarządzania.
+
++ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie firmware dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego realizującego dwukierunkową komunikację z mechanizmem automatycznego wykrywania (MQTT Self-Discovery).
+
++ *Weryfikacja integracji systemu* -- potwierdzenie poprawności przepływu danych między warstwą fizyczną (ESP32), warstwą komunikacyjną (Mosquitto) a warstwą aplikacyjną (Home Assistant), w tym działania automatyzacji i wizualizacji danych.
+
++ *Badania bezpieczeństwa sieciowego* -- przeprowadzenie testów bezpieczeństwa na dedykowanym stanowisku badawczym obejmujących: izolację sieci IoT na poziomie warstwy sieciowej (Layer 3), uwierzytelnianie dostępu do brokera MQTT (Layer 4) oraz bezpieczny zdalny dostęp do systemu za pośrednictwem sieci VPN.
+
+Zakres pracy obejmuje całościowy cykl: od doboru komponentów i środowiska, przez implementację, aż po analizę bezpieczeństwa wdrożonego rozwiązania.
 
 == Przegląd zawartości pracy
 <przeglad-zawartosci-pracy>
-...
+Praca składa się z pięciu rozdziałów merytorycznych, których zawartość przedstawia się następująco:
+
+*Rozdział 1 -- Wstęp* stanowi wprowadzenie do tematyki pracy. Przedstawiono w nim kontekst i motywację podjętego tematu, sformułowano cel oraz zakres pracy, a także opisano strukturę dokumentu.
+
+*Rozdział 2 -- Podstawy teoretyczne* zawiera przegląd kluczowych technologii i narzędzi wykorzystanych w projekcie. Omówiono architekturę i filozofię platformy Home Assistant, zasadę działania protokołu MQTT wraz z jego mechanizmami jakości usług (QoS), retained messages i LWT, dostępne rozwiązania sprzętowe dla ekosystemu Smart Home oraz platformę Docker jako środowisko konteneryzacji.
+
+*Rozdział 3 -- Implementacja projektu i realizacja systemu* opisuje praktyczną część pracy. Przedstawiono ogólną architekturę trójwarstwowego systemu, a następnie krok po kroku opisano proces przygotowania środowiska serwerowego (instalacja Debian, Docker), wdrożenie brokera MQTT i platformy Home Assistant, a także implementację oprogramowania obu węzłów IoT -- sensorowego (Node-1) i wykonawczego z mechanizmem Self-Discovery (Node-2).
+
+*Rozdział 4 -- Badania bezpieczeństwa systemu* poświęcony jest analizie bezpieczeństwa wdrożonego rozwiązania. Opisano stanowisko badawcze z wydzieloną podsiecią IoT, a następnie zaprezentowano wyniki testów przeprowadzonych w warstwie sieciowej (Layer 3) -- weryfikacja izolacji sieci w trzech scenariuszach konfiguracyjnych -- oraz w warstwie aplikacji (Layer 4+) -- testy uwierzytelniania MQTT i zdalnego dostępu przez VPN Tailscale.
+
+*Rozdział 5 -- Podsumowanie* zawiera syntetyczne zestawienie osiągniętych wyników, ocenę stopnia realizacji celów pracy oraz wnioski dotyczące możliwości dalszego rozwoju systemu.
 

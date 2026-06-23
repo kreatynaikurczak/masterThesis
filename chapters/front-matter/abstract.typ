@@ -1,2 +1,23 @@
 #heading(level: 1, numbering: none)[Streszczenie] <streszczenie>
-// Miejsce na streszczenie w języku polskim i angielskim
+
+Niniejsza praca dyplomowa dotyczy projektu i implementacji serwerowego systemu automatyki domowej opartego na mikrokontrolerach ESP oraz protokole komunikacyjnym MQTT. Celem pracy było zaprojektowanie skalowalnej, działającej lokalnie architektury inteligentnego domu, a następnie przeprowadzenie badań jej bezpieczeństwa sieciowego.
+
+W ramach części teoretycznej omówiono platformę Home Assistant jako centrum zarządzania automatyką domową, protokół MQTT jako lekką magistralę komunikacyjną dla urządzeń Internetu Rzeczy (IoT) oraz platformę Docker jako środowisko konteneryzacji usług serwerowych. Przedstawiono również dostępne rozwiązania sprzętowe kompatybilne z systemem Home Assistant.
+
+W części praktycznej zaprojektowano i wdrożono trójwarstwowy system automatyki domowej. Warstwa fizyczna opiera się na mikrokontrolerach ESP32, dla których opracowano dwa rodzaje oprogramowania węzłów: węzeł sensorowy (Node-1) publikujący dane telemetryczne (temperatura, wilgotność, ciśnienie) oraz węzeł wykonawczy (Node-2) realizujący dwukierunkową komunikację z mechanizmem MQTT Self-Discovery, umożliwiającym automatyczną rejestrację urządzenia w systemie nadrzędnym bez ręcznej konfiguracji. Warstwa sieciowa wykorzystuje broker MQTT Mosquitto, natomiast warstwę aplikacyjną stanowi platforma Home Assistant zainstalowana w środowisku Docker na serwerze opartym na systemie Debian.
+
+Istotną część pracy stanowią badania bezpieczeństwa wdrożonego systemu. Eksperymenty przeprowadzono na dedykowanym stanowisku badawczym z siecią IoT odseparowaną od sieci domowej za pomocą routera TP-Link. Testy w warstwie sieciowej (Layer 3) zweryfikowały skuteczność izolacji ruchu ICMP w trzech scenariuszach konfiguracyjnych. Testy w warstwie aplikacji (Layer 4+) potwierdziły skuteczność uwierzytelniania brokera MQTT za pomocą hasła, blokującego nieautoryzowany dostęp do szyny komunikacyjnej, oraz bezpiecznego zdalnego dostępu do interfejsu Home Assistant za pośrednictwem sieci VPN Tailscale opartej na protokole WireGuard, eliminującej konieczność ekspozycji usług w publicznej sieci Internet.
+
+Wyniki badań wskazują, że właściwie skonfigurowana architektura oparta na separacji sieci IoT, uwierzytelnianiu MQTT oraz tunelowaniu VPN stanowi solidną podstawę bezpiecznego i niezawodnego systemu automatyki domowej.
+
+#heading(level: 1, numbering: none)[Abstract] <abstract>
+
+This master's thesis concerns the design and implementation of a server-based home automation system built on ESP microcontrollers and the MQTT communication protocol. The goal of the work was to design a scalable, locally operating smart home architecture and subsequently conduct a security assessment of the system.
+
+The theoretical section covers the Home Assistant platform as a home automation hub, the MQTT protocol as a lightweight communication bus for Internet of Things (IoT) devices, and the Docker platform as a containerization environment for server-side services. Available hardware solutions compatible with Home Assistant are also reviewed.
+
+In the practical part, a three-layer home automation system was designed and deployed. The physical layer relies on ESP32 microcontrollers, for which two types of node firmware were developed: a sensor node (Node-1) that publishes telemetry data (temperature, humidity, pressure) and an actuator node (Node-2) implementing bidirectional communication with an MQTT Self-Discovery mechanism, enabling automatic registration of the device in the management system without manual configuration. The network layer uses the Mosquitto MQTT broker, while the application layer consists of the Home Assistant platform installed in a Docker environment on a Debian-based server.
+
+A significant part of the thesis is dedicated to security research on the deployed system. Experiments were conducted on a dedicated test bench with an IoT network isolated from the home network using a TP-Link router. Layer 3 network tests verified the effectiveness of ICMP traffic isolation across three configuration scenarios. Application layer (Layer 4+) tests confirmed the effectiveness of MQTT broker password authentication in blocking unauthorized access to the communication bus, as well as secure remote access to the Home Assistant interface via the Tailscale VPN network based on the WireGuard protocol, eliminating the need to expose services on the public Internet.
+
+The research results indicate that a properly configured architecture based on IoT network segmentation, MQTT authentication, and VPN tunneling provides a solid foundation for a secure and reliable home automation system.
