@@ -1,5 +1,3 @@
-== Docker
-
 Docker to otwarta platforma służąca do automatyzacji wdrażania, skalowania i zarządzania aplikacjami wewnątrz lekkich i przenośnych kontenerów. Została ona zapoczątkowana przez Solomona Hykesa i udostępniona jako projekt open-source w marcu 2013 roku. Docker zrewolucjonizował podejście do tworzenia oprogramowania, wprowadzając standard konteneryzacji, który pozwala na izolację aplikacji od infrastruktury systemowej, zapewniając ich spójne działanie w różnych środowiskach — od lokalnej maszyny programisty po zaawansowane klastry obliczeniowe w chmurze.
 
 === Konteneryzacja a Wirtualizacja

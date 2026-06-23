@@ -34,10 +34,10 @@ Przed przystąpieniem do właściwej instalacji konieczne było dostosowanie ust
 
 Po uruchomieniu komputera z przygotowanego nośnika wybrano tryb *Graphical Install*. Proces przebiegał zgodnie z następującymi etapami:
 
-1. **Konfiguracja regionalna**: Wybrano język polski oraz układ klawiatury programisty.
-2. **Konfiguracja sieci**: Dzięki zintegrowaniu w jądrze systemu Debian 12 sterowników z sekcji *non-free-firmware*, karta sieciowa Intel została poprawnie zidentyfikowana, co umożliwiło nawiązanie połączenia bezprzewodowego w trakcie instalacji.
-3. **Partycjonowanie dysku**: Zastosowano automatyczne partycjonowanie całej przestrzeni dyskowej z wykorzystaniem mechanizmu LVM (Logical Volume Manager). Wybór ten podyktowany był elastycznością w przyszłym zarządzaniu wolumenami logicznymi.
-4. **Wybór oprogramowania**: Zdecydowano o pominięciu instalacji środowiska graficznego. Wybrano jedynie podstawowe narzędzia systemowe (*Standard system utilities*) oraz serwer SSH (*SSH server*). Takie podejście pozwoliło na minimalizację narzutu systemowego i zwiększenie poziomu bezpieczeństwa stacji roboczej.
+1. *Konfiguracja regionalna*: Wybrano język polski oraz układ klawiatury programisty.
+2. *Konfiguracja sieci*: Dzięki zintegrowaniu w jądrze systemu Debian 12 sterowników z sekcji *non-free-firmware*, karta sieciowa Intel została poprawnie zidentyfikowana, co umożliwiło nawiązanie połączenia bezprzewodowego w trakcie instalacji.
+3. *Partycjonowanie dysku*: Zastosowano automatyczne partycjonowanie całej przestrzeni dyskowej z wykorzystaniem mechanizmu LVM (Logical Volume Manager). Wybór ten podyktowany był elastycznością w przyszłym zarządzaniu wolumenami logicznymi.
+4. *Wybór oprogramowania*: Zdecydowano o pominięciu instalacji środowiska graficznego. Wybrano jedynie podstawowe narzędzia systemowe (*Standard system utilities*) oraz serwer SSH (*SSH server*). Takie podejście pozwoliło na minimalizację narzutu systemowego i zwiększenie poziomu bezpieczeństwa stacji roboczej.
 
 ==== Konfiguracja poinstalacyjna
 

@@ -10,6 +10,7 @@
   opiekun: "dr inż. Paweł Król",
   rok: "2026",
 ) = {
+  set page(numbering: none)
   grid(
     columns: (80pt, 1fr, 80pt),
     align: (left + horizon, center + horizon, right + horizon),

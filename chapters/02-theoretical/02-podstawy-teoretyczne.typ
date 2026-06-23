@@ -14,4 +14,7 @@
 <02-MQTT-protocol>
 #include "03-MQTT-protocol/MQTT-protocol.typ"
 
+== Platforma Docker
+<02-docker>
 #include "04-docker/docker.typ"
+
