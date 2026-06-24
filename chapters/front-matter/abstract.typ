@@ -2,7 +2,7 @@
 
 Przedmiotem tej pracy dyplomowej jest projekt oraz implementacja serwerowego systemu automatyki domowej zbudowanego w oparciu o mikrokontrolery z rodziny ESP oraz protokół komunikacyjny MQTT. Głównym celem projektu było opracowanie skalowalnej oraz działającej lokalnie architektury inteligentnego domu, a następnie poddanie jej badaniom pod kątem bezpieczeństwa w sieci.
 
-W części teoretycznej zostaje opisana platforma Home Assistant, która jest centralnym środowiskiem zarządzania automatyką domową. Następnie zcharakteryzowany zostaje protokół MQTT, czyli sposób na wymianę danych między urządzeniami Internetu Rzeczy (IoT). Omówiona zostaje również platforma Docker, która jest narzędziem konteneryzacji usług serwerowych. Uzupełnieniem tego przeglądu jest zestawienie dostępnych rozwiązań sprzętowych pod systemy tego typu.
+W ramach części teoretycznej omówiono platformę Home Assistant jako centrum zarządzania automatyką domową, protokół MQTT jako lekką magistralę komunikacyjną dla urządzeń Internetu Rzeczy (IoT) oraz platformę Docker jako środowisko konteneryzacji usług serwerowych. Przedstawiono również dostępne rozwiązania sprzętowe kompatybilne z systemem Home Assistant.
 
 W części praktycznej zaprojektowano i uruchomiono trójwarstwowy system automatyki domowej. Warstwę fizyczną tworzą mikrokontrolery ESP32, które podzielono ze wzgłedu na zastosowanie. Pierwszy to czujnik (Node-1) publikujący dane telemetryczne, a drugi to element wykonawczy (Node-2). Rolę warstwy sieciowej pełni broker MQTT Mosquitto a warstwę aplikacyjną stanowi platforma Home Assistant uruchomiona w kontenerze Docker na serwerze.
 
