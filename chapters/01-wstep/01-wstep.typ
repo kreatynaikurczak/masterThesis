@@ -3,21 +3,21 @@
 
 == Wprowadzenie
 <wprowadzenie>
-Dynamiczny rozwój Internetu Rzeczy (ang. _Internet of Things_, IoT) sprawia, że inteligentne systemy zarządzania budynkiem -- znane pod zbiorczą nazwą Smart Home -- stają się coraz powszechniejszym elementem współczesnego życia. Urządzenia zdolne do komunikacji sieciowej, autonomicznego zbierania danych i reagowania na polecenia użytkownika są dostępne w szerokiej gamie cenowej, a ich liczba rośnie w tempie wykładniczym. Towarzyszy temu jednak istotne wyzwanie: fragmentacja ekosystemu producentów, brak jednolitych standardów interoperacyjności oraz rosnące zagrożenia w obszarze cyberbezpieczeństwa.
+W ciągu ostatnich lat dynamicznie wzrasta liczba urządzeń Internetu Rzeczy (ang. _Internet of Things_, IoT) co powoduje, że inteligentne systemy zarządzania budynkiem -- znane również jako Smart Home -- stają się coraz bardziej powszechnym elementem współczesnego życia. Urządzenia zdolne do komunikacji sieciowej, które potrafią zbierać dane i reagować na polecenia użytkownika są dostępne w różnych cenach, a ich liczba rośnie w tempie wykładniczym. Wiąże się to jednak z dużym wyzwaniem, jakim jest rozdrobnienie rynku producentów urządzeń IoT oraz rosnące zagrożenia w obszarze cyberbezpieczeństwa.
 
-Odpowiedzią na te problemy jest platforma Home Assistant -- otwarte oprogramowanie, które pełni rolę centralnego huba inteligentnego domu, integrując urządzenia od setek producentów w jednym, spójnym interfejsie i przechowując dane lokalnie, bez uzależnienia od zewnętrznych chmur. Kluczową rolę w komunikacji między urządzeniami odgrywa protokół MQTT (ang. _Message Queuing Telemetry Transport_), zaprojektowany z myślą o środowiskach o ograniczonych zasobach i niskiej przepustowości -- cechach charakterystycznych dla mikrokontrolerów ESP32 stosowanych w węzłach pomiarowych i wykonawczych.
+Rozwiązaniem tego problemu jest platforma Home Assistant czyli otwarte oprogramowanie, które jest sercem całego systemu inteligentnego domu, integrując urządzenia od różnych producentów w jednym, spójnym interfejsie i przechowując dane lokalnie, bez uzależnienia od zewnętrznych dostawców usług chmurowych. Kluczową rolę w komunikacji między urządzeniami odgrywa protokół MQTT (ang. _Message Queuing Telemetry Transport_), zaprojektowany z myślą o środowiskach o ograniczonych zasobach i niskiej przepustowości -- cechach charakterystycznych dla mikrokontrolerów ESP32 stosowanych w węzłach pomiarowych i wykonawczych.
 
-Niniejsza praca podejmuje zagadnienie projektowania i implementacji kompletnego, działającego lokalnie systemu automatyki domowej opartego na tych technologiach, a następnie analizuje jego bezpieczeństwo sieciowe w warunkach zbliżonych do rzeczywistego wdrożenia.
+Niniejsza praca skupia się na zagadnieniu projektowania i implementacji kompletnego, działającego lokalnie systemu automatyki domowej opartego na wyżej wymienionych technologiach, a następnie analizuje jego bezpieczeństwo sieciowe w warunkach zbliżonych do rzeczywistego wdrożenia.
 
 == Cel i zakres pracy
 <cel-pracy>
-Głównym celem niniejszej pracy dyplomowej jest zaprojektowanie, implementacja i weryfikacja bezpieczeństwa serwerowego systemu automatyki domowej opartego na mikrokontrolerach z rodziny ESP oraz protokole MQTT, zintegrowanego z platformą Home Assistant.
+Głównym celem tej pracy dyplomowej jest zaprojektowanie i implementacja a także weryfikacja bezpieczeństwa serwerowego systemu automatyki domowej opartego na mikrokontrolerach z rodziny ESP oraz protokole MQTT, zintegrowanego z platformą Home Assistant.
 
 Cel główny realizowany jest przez następujące cele szczegółowe:
 
-+ *Przegląd i dobór technologii* -- analiza dostępnych platform automatyki domowej, protokołów komunikacyjnych i rozwiązań sprzętowych pod kątem ich przydatności do realizacji systemu działającego lokalnie, bez zależności od zewnętrznej infrastruktury chmurowej.
++ *Przegląd i dobór technologii* -- analiza dostępnych platform automatyki domowej i rozwiązań sprzętowych pod kątem ich przydatności do realizacji systemu działającego lokalnie, bez zależności od zewnętrznej infrastruktury chmurowej.
 
-+ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker, wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant jako centralnego systemu zarządzania.
++ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant jako centralnego systemu zarządzania.
 
 + *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie firmware dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego realizującego dwukierunkową komunikację z mechanizmem automatycznego wykrywania (MQTT Self-Discovery).
 
