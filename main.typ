@@ -1,4 +1,4 @@
-Now #import "template.typ": setup
+#import "template.typ": setup
 #import "chapters/title-page/title-page.typ": title-page
 
 #show: setup

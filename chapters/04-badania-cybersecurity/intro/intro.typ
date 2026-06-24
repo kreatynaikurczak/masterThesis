@@ -2,26 +2,26 @@
 
 == Wstęp i opis stanowiska badawczego
 
-Celem niniejszego rozdziału jest przeprowadzenie testów bezpieczeństwa zaprojektowanego i wdrożonego systemu automatyki domowej, opartego na mikrokontrolerach ESP oraz protokole MQTT. Ze względu na specyfikę urządzeń Internetu Rzeczy (IoT), które często posiadają ograniczone zasoby obliczeniowe i mogą być podatne na różnego rodzaju ataki sieciowe, kluczowym elementem ochrony systemu jest zapewnienie odpowiedniej izolacji sieciowej na poziomie warstwy 3 (sieciowej) oraz kontrola dostępu w wyższych warstwach modelu OSI/ISO.
+Celem tego rozdziału jest przeprowadzenie testów bezpieczeństwa zaprojektowanego i wdrożonego systemu automatyki domowej, opartego na mikrokontrolerach ESP oraz protokole MQTT. Ze względu na podatność urządzeń Internetu Rzeczy (IoT), które często posiadają ograniczone zasoby obliczeniowe i mogą być podatne na różnego rodzaju ataki sieciowe, kluczowym elementem ochrony systemu jest zapewnienie odpowiedniej izolacji sieciowej na poziomie warstwy 3 (sieciowej) oraz kontrola dostępu w wyższych warstwach modelu OSI/ISO.
 
 W celu zasymulowania rzeczywistych warunków pracy systemu oraz potencjalnych zagrożeń, przygotowano dedykowane stanowisko badawcze. Głównym założeniem projektowym było odseparowanie urządzeń IoT od głównej sieci domowej użytkownika, w której mogą znajdować się wrażliwe urządzenia (np. komputery osobiste, serwery NAS). Do realizacji tego zadania wykorzystano dwuinterfejsowy (dual-homed) serwer oparty na systemie Debian oraz router TP-Link, który tworzy osobną podsieć dla urządzeń automatyki domowej.
 
 Stanowisko badawcze składa się z następujących komponentów:
 1. *Dwuinterfejsowy serwer Debian*:
-   - Pełni rolę centralnej jednostki zarządzającej automatyką domową (broker MQTT, serwer aplikacji).
-   - Wyposażony jest w dwie karty sieciowe:
-     - Interfejs bezprzewodowy (Wi-Fi) o adresie IP `192.168.8.100`, podłączony do sieci IoT.
-     - Interfejs przewodowy (Ethernet) o adresie IP `192.168.1.17`, podłączony do sieci domowej/ISP.
+  - Pełni rolę centralnej jednostki zarządzającej automatyką domową (broker MQTT, serwer aplikacji).
+  - Wyposażony jest w dwie karty sieciowe:
+    - Interfejs bezprzewodowy (Wi-Fi) o adresie IP `192.168.8.100`, podłączony do sieci IoT.
+    - Interfejs przewodowy (Ethernet) o adresie IP `192.168.1.17`, podłączony do sieci domowej/ISP.
 2. *Router IoT (TP-Link)*:
-   - Tworzy odseparowaną sieć bezprzewodową dla urządzeń automatyki domowej.
-   - Adres IP interfejsu LAN routera to `192.168.8.1` (podsieć `192.168.8.0/24`).
-   - Port WAN routera jest podłączony do portu LAN routera dostawcy usług internetowych (ISP). Adres IP interfejsu WAN jest przydzielany dynamicznie (DHCP) z puli sieci nadrzędnej `192.168.1.0/24` (w warunkach testowych router otrzymał adres `192.168.1.32`).
+  - Tworzy odseparowaną sieć bezprzewodową dla urządzeń automatyki domowej.
+  - Adres IP interfejsu LAN routera to `192.168.8.1` (podsieć `192.168.8.0/24`).
+  - Port WAN routera jest podłączony do portu LAN routera dostawcy usług internetowych (ISP). Adres IP interfejsu WAN jest przydzielany dynamicznie (DHCP) z puli sieci nadrzędnej `192.168.1.0/24` (w warunkach testowych router otrzymał adres `192.168.1.32`).
 3. *Laptop testowy (system Linux)*:
-   - Działa w podsieci IoT pod adresem IP `192.168.8.101`.
-   - W badaniach symuluje zainfekowane lub nieautoryzowane urządzenie IoT próbujące uzyskać dostęp do innych segmentów sieci.
+  - Działa w podsieci IoT pod adresem IP `192.168.8.101`.
+  - W badaniach symuluje zainfekowane lub nieautoryzowane urządzenie IoT próbujące uzyskać dostęp do innych segmentów sieci.
 4. *Router ISP i Internet*:
-   - Reprezentują sieć domową nadrzędną (`192.168.1.0/24`) oraz sieć globalną.
-   - Adres bramy domyślnej w sieci ISP to `192.168.1.1`. Jako cel testów dostępności usług zewnętrznych wykorzystano publiczny serwer DNS Google o adresie IP `8.8.8.8`.
+  - Reprezentują sieć domową nadrzędną (`192.168.1.0/24`) oraz sieć globalną.
+  - Adres bramy domyślnej w sieci ISP to `192.168.1.1`. Jako cel testów dostępności usług zewnętrznych wykorzystano publiczny serwer DNS Google o adresie IP `8.8.8.8`.
 
 Topologię logiczną przygotowanego stanowiska badawczego przedstawiono na @fig-network-topology.
 
@@ -44,7 +44,7 @@ Topologię logiczną przygotowanego stanowiska badawczego przedstawiono na @fig-
           ],
           rect(width: 100%, stroke: 1pt + rgb("0066cc"), fill: rgb("f0f8ff"), radius: 4pt, inset: 8pt)[
             *Urządzenia ESP* \ (Automatyka IoT) \ `192.168.8.X`
-          ]
+          ],
         ),
         text(size: 16pt, fill: rgb("0066cc"))[#sym.arrow.l.r],
         stack(
@@ -59,7 +59,7 @@ Topologię logiczną przygotowanego stanowiska badawczego przedstawiono na @fig-
             (Broker MQTT / Serwer) \
             Wi-Fi: `192.168.8.100` \
             Eth: `192.168.1.17`
-          ]
+          ],
         ),
         text(size: 16pt, fill: rgb("cc0000"))[#sym.arrow.l.r],
         stack(
@@ -72,10 +72,10 @@ Topologię logiczną przygotowanego stanowiska badawczego przedstawiono na @fig-
           rect(width: 100%, stroke: 1pt + rgb("333333"), fill: rgb("eeeeee"), radius: 4pt, inset: 8pt)[
             *Internet (DNS)* \
             IP: `8.8.8.8`
-          ]
-        )
+          ],
+        ),
       )
-    ]
+    ],
   ),
   caption: [Topologia sieciowa stanowiska badawczego],
 ) <fig-network-topology>
