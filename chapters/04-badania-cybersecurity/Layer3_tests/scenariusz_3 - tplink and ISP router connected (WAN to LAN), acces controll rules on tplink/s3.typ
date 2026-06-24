@@ -7,6 +7,14 @@ Trzeci scenariusz badawczy stanowi rozwinięcie scenariusza drugiego. Układ fiz
   caption: [Interfejs zarządzania routera TP-Link z aktywną regułą blokowania ruchu do sieci domowej],
 ) <fig-s3-acl-config>
 
+Topologię logiczną tego układu w programie Cisco Packet Tracer przedstawiono na @fig-s3-packet-tracer.
+
+#figure(
+  image("images/cisco_packet_tracer.png", width: 90%),
+  caption: [Schemat symulacji w programie Cisco Packet Tracer dla Scenariusza 3],
+) <fig-s3-packet-tracer>
+
+
 Reguła ta została zaimplementowana w następujący sposób:
 - *Źródło (Source)*: Wszystkie hosty z sieci bezprzewodowej IoT (`192.168.8.0/24`).
 - *Cel (Destination)*: Zakres adresów IP odpowiadający sieci nadrzędnej/domowej (`192.168.1.0/24`).

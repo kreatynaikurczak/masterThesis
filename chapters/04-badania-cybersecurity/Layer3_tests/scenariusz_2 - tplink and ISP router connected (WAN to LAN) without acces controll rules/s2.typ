@@ -7,6 +7,14 @@ W drugim scenariuszu badawczym router TP-Link został fizycznie połączony port
   caption: [Interfejs zarządzania routera TP-Link z wyłączoną funkcją kontroli dostępu],
 ) <fig-s2-acl-config>
 
+Topologię logiczną tego układu w programie Cisco Packet Tracer przedstawiono na @fig-s2-packet-tracer.
+
+#figure(
+  image("images/cisco_packet_tracer.png", width: 90%),
+  caption: [Schemat symulacji w programie Cisco Packet Tracer dla Scenariusza 2],
+) <fig-s2-packet-tracer>
+
+
 Celem testu było sprawdzenie, czy domyślne mechanizmy routingu i NAT na routerze TP-Link zapewniają izolację sieci domowej przed dostępem z sieci IoT. Wyniki prób pingowania z laptopa testowego (`192.168.8.101`) do wybranych celów przedstawiono na @fig-s2-ping-img.
 
 

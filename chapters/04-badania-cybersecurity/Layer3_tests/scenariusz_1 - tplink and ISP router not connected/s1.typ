@@ -1,6 +1,12 @@
 === Scenariusz 1: Brak połączenia fizycznego routera TP-Link z siecią domową (ISP)
 
-W pierwszym scenariuszu badawczym przetestowano zachowanie sieci w sytuacji pełnej izolacji fizycznej. Router TP-Link (obsługujący sieć IoT) nie został połączony swoim portem WAN z siecią domową/ISP. Oznacza to, że podsieć bezprzewodowa `192.168.8.0/24` funkcjonowała jako sieć całkowicie lokalna i zamknięta (offline).
+W pierwszym scenariuszu badawczym przetestowano zachowanie sieci w sytuacji pełnej izolacji fizycznej. Router TP-Link (obsługujący sieć IoT) nie został połączony swoim portem WAN z siecią domową/ISP. Oznacza to, że podsieć bezprzewodowa `192.168.8.0/24` funkcjonowała jako sieć całkowicie lokalna i zamknięta (offline). Topologię logiczną tego układu w programie Cisco Packet Tracer przedstawiono na @fig-s1-packet-tracer.
+
+#figure(
+  image("images/cisco_packet_tracer.png", width: 90%),
+  caption: [Schemat symulacji w programie Cisco Packet Tracer dla Scenariusza 1],
+) <fig-s1-packet-tracer>
+
 
 Celem testu było sprawdzenie możliwości komunikacji laptopa testowego (`192.168.8.101`) z interfejsem bezprzewodowym serwera (`192.168.8.100`), jego interfejsem przewodowym (`192.168.1.17`) należącym do sieci nadrzędnej, oraz z hostem w sieci Internet (`8.8.8.8`). Wyniki testu przedstawiono na zrzucie ekranu (@fig-s1-ping-img).
 
