@@ -17,9 +17,9 @@ Cel główny realizowany jest przez następujące cele szczegółowe:
 
 + *Przegląd i dobór technologii* -- analiza dostępnych platform automatyki domowej i rozwiązań sprzętowych pod kątem ich przydatności do realizacji systemu działającego lokalnie, bez zależności od zewnętrznej infrastruktury chmurowej.
 
-+ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant jako centralnego systemu zarządzania.
++ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker, wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant jako centralnego systemu zarządzania.
 
-+ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie firmware dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego realizującego dwukierunkową komunikację z mechanizmem automatycznego wykrywania (MQTT Self-Discovery).
++ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie firmware dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego.
 
 + *Weryfikacja integracji systemu* -- potwierdzenie poprawności przepływu danych między warstwą fizyczną (ESP32), warstwą komunikacyjną (Mosquitto) a warstwą aplikacyjną (Home Assistant), w tym działania automatyzacji i wizualizacji danych.
 
