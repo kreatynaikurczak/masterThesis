@@ -3,25 +3,23 @@
 
 == Wprowadzenie
 <wprowadzenie>
-W ciągu ostatnich lat dynamicznie wzrasta liczba urządzeń Internetu Rzeczy (ang. _Internet of Things_, IoT) co powoduje, że inteligentne systemy zarządzania budynkiem -- znane również jako Smart Home -- stają się coraz bardziej powszechnym elementem współczesnego życia. Urządzenia zdolne do komunikacji sieciowej, które potrafią zbierać dane i reagować na polecenia użytkownika są dostępne w różnych cenach, a ich liczba rośnie w tempie wykładniczym. Wiąże się to jednak z dużym wyzwaniem, jakim jest rozdrobnienie rynku producentów urządzeń IoT oraz rosnące zagrożenia w obszarze cyberbezpieczeństwa.
+W ciągu ostatnich lat dynamicznie wzrasta liczba urządzeń Internetu Rzeczy co powoduje, że inteligentne systemy zarządzania budynkiem -- znane również jako Smart Home -- stają się coraz bardziej powszechnym elementem współczesnego życia. Urządzenia zdolne do komunikacji sieciowej, które potrafią zbierać dane i reagować na polecenia użytkownika są dostępne w różnych cenach, a ich liczba bardzo szybko rośnie. Wiąże się to jednak z dużym wyzwaniem, jakim jest rozdrobnienie rynku producentów urządzeń IoT oraz rosnące zagrożenia w obszarze cyberbezpieczeństwa.
 
-Rozwiązaniem tego problemu jest platforma Home Assistant czyli otwarte oprogramowanie, które jest sercem całego systemu inteligentnego domu, integrując urządzenia od różnych producentów w jednym, spójnym interfejsie i przechowując dane lokalnie, bez uzależnienia od zewnętrznych dostawców usług chmurowych. Kluczową rolę w komunikacji między urządzeniami odgrywa protokół MQTT (ang. _Message Queuing Telemetry Transport_), zaprojektowany z myślą o środowiskach o ograniczonych zasobach i niskiej przepustowości -- cechach charakterystycznych dla mikrokontrolerów ESP32 stosowanych w węzłach pomiarowych i wykonawczych.
-
-Niniejsza praca skupia się na zagadnieniu projektowania i implementacji kompletnego, działającego lokalnie systemu automatyki domowej opartego na wyżej wymienionych technologiach, a następnie analizuje jego bezpieczeństwo sieciowe w warunkach zbliżonych do rzeczywistego wdrożenia.
+Rozwiązaniem tego problemu jest platforma Home Assistant czyli otwarte oprogramowanie, które jest sercem całego systemu inteligentnego domu, integrując urządzenia od różnych producentów w jednym, spójnym interfejsie i przechowując dane lokalnie, bez uzależnienia od zewnętrznych dostawców usług chmurowych. Kluczową rolę w komunikacji między urządzeniami odgrywa protokół MQTT, zaprojektowany z myślą o środowiskach o ograniczonych zasobach i niskiej przepustowości czyli cechach charakterystycznych dla mikrokontrolerów ESP32 stosowanych w węzłach pomiarowych i wykonawczych.
 
 == Cel i zakres pracy
 <cel-pracy>
 Głównym celem tej pracy dyplomowej jest zaprojektowanie i implementacja a także weryfikacja bezpieczeństwa serwerowego systemu automatyki domowej opartego na mikrokontrolerach z rodziny ESP oraz protokole MQTT, zintegrowanego z platformą Home Assistant.
 
-Cel główny realizowany jest przez następujące cele szczegółowe:
+Główny cel projektu jest realizowany poprzez poniższe punkty:
 
 + *Przegląd i dobór technologii* -- analiza dostępnych platform automatyki domowej i rozwiązań sprzętowych pod kątem ich przydatności do realizacji systemu działającego lokalnie, bez zależności od zewnętrznej infrastruktury chmurowej.
 
-+ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker, wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant.
++ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker oraz wdrożenie brokera MQTT Mosquitto i platformy Home Assistant.
 
-+ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie oprogramowania dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego.
++ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie oprogramowania dla dwóch klas urządzeń opartych na mikrokontrolerach ESP: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego.
 
-+ *Weryfikacja integracji systemu* -- potwierdzenie poprawności przepływu danych między warstwą fizyczną (ESP32), warstwą komunikacyjną (Mosquitto) a warstwą aplikacyjną (Home Assistant), w tym działania automatyzacji i wizualizacji danych.
++ *Weryfikacja integracji systemu* -- potwierdzenie poprawności przepływu danych między warstwą fizyczną (ESP32), warstwą komunikacyjną (Mosquitto) a warstwą aplikacyjną (Home Assistant) oraz potwierdzenie poprawności działania automatyzacji i wizualizacji danych.
 
 + *Badania bezpieczeństwa sieciowego* -- przeprowadzenie testów bezpieczeństwa na dedykowanym stanowisku badawczym obejmujących: izolację sieci IoT na poziomie warstwy sieciowej (Layer 3), uwierzytelnianie dostępu do brokera MQTT (Layer 4) oraz bezpieczny zdalny dostęp do systemu za pośrednictwem sieci VPN.
 
