@@ -1,5 +1,5 @@
 #let title-page(
-  katedra: "..................................",
+  katedra: "Automatyki i Informatyki E1",
   kierunek: "Infotronika",
   specjalnosc: "……………………………..",
   typ-studiów: "STACJONARNE",
