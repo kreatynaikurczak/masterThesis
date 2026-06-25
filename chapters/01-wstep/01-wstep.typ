@@ -9,9 +9,9 @@ Rozwiązaniem tego problemu jest platforma Home Assistant, czyli otwarte oprogra
 
 == Cel i zakres pracy
 <cel-pracy>
-Głównym celem tej pracy dyplomowej jest zaprojektowanie i implementacja lokalnego systemu automatyki domowej, zintegrowanego z platformą Home Assistant i opartego na mikrokontrolerach ESP32 oraz protokole MQTT, a następnie weryfikacja jego bezpieczeństwa.
+Głównym celem tej pracy dyplomowej jest zaprojektowanie i implementacja lokalnego systemu automatyki domowej, zintegrowanego z platformą Home Assistant i opartego na mikrokontrolerach ESP32 jako węzłach końcowych oraz protokole komunikacyjnym MQTT, a następnie weryfikacja jego bezpieczeństwa w sieci.
 
-Zakres pracy obejmuje cały cykl od doboru komponentów i środowiska, przez implementację, aż po analizę bezpieczeństwa wdrożonego rozwiązania.
+Zakres pracy obejmuje cały cykl od doboru komponentów potrzebnych do stworzenia systemu, poprzez implementację w środowisku domowym, aż po analizę bezpieczeństwa wdrożonego rozwiązania.
 
 == Przegląd zawartości pracy
 <przeglad-zawartosci-pracy>
