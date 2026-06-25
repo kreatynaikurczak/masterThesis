@@ -1,33 +1,27 @@
 //#heading(level: 2)[Home Assistant]
 
-Home Assistant to zaawansowana platforma typu open-source, służąca do scentralizowanego zarządzania automatyką domową. System ten pełni rolę lokalnego kontrolera (tzw. bramki lub huba), integrującego różnorodne urządzenia i usługi w jedną, spójną strukturę. Kluczowym wyróżnikiem Home Assistant jest jego niezależność od dostawców chmurowych oraz nacisk na prywatność użytkownika i lokalne przetwarzanie danych.
+Home Assistant to zaawansowana platforma typu open-source, służąca do scentralizowanego zarządzania automatyką domową. System ten pełni rolę lokalnego kontrolera (tzw. bramki lub huba), integrującego różnorodne urządzenia i usługi w jedną, spójną strukturę. Kluczową zaletą Home Assistant jest jego niezależność od dostawców chmurowych oraz nacisk na prywatność użytkownika i lokalne przetwarzanie danych.
 
 Projekt został zapoczątkowany przez Paulusa Schoutsena we wrześniu 2013 roku jako aplikacja napisana w języku Python. Od tamtej pory, dzięki aktywnemu wsparciu społeczności zgromadzonej wokół serwisu GitHub, Home Assistant stał się jednym z najbardziej rozbudowanych i najczęściej aktualizowanych systemów automatyki domowej na świecie.
 
 === Filozofia i Architektura
 
-Fundamentem Home Assistant jest idea "Local Control" (sterowanie lokalne) oraz "Privacy First" (prywatność przede wszystkim). W przeciwieństwie do wielu komercyjnych rozwiązań (np. Google Home, Amazon Alexa), Home Assistant dąży do tego, aby cała logika sterowania oraz przechowywanie danych odbywało się bezpośrednio w sieci lokalnej użytkownika. Takie podejście nie tylko zwiększa bezpieczeństwo, ale również zapewnia ciągłość działania systemu w przypadku awarii połączenia internetowego.
+Fundamentem Home Assistant jest idea polegająca na sterowaniu lokalnym oraz prywatności. W przeciwieństwie do wielu komercyjnych rozwiązań Home Assistant dąży do tego, aby cała logika sterowania oraz przechowywanie danych odbywało się bezpośrednio w sieci lokalnej użytkownika. Takie podejście nie tylko zwiększa bezpieczeństwo, ale również zapewnia ciągłość działania systemu w przypadku awarii połączenia internetowego.
 
-Architektura systemu opiera się na zdarzeniach (event-driven architecture). Wszystkie interakcje, zmiany stanów urządzeń czy wyzwalacze automatyzacji są procesowane przez centralną magistralę zdarzeń (Event Bus).
+Architektura systemu opiera się na zdarzeniach. Wszystkie interakcje, zmiany stanów urządzeń czy wyzwalacze automatyzacji są przetwarzane przez centralną magistralę zdarzeń.
 
 === Kluczowe Pojęcia i Model Danych
 
-W celu zachowania interoperacyjności między tysiącami różnych urządzeń, Home Assistant wykorzystuje sformalizowany model danych, którego podstawą są następujące komponenty:
+W celu zachowania możliwości operacyjnych między dużą liczbą różnych urządzeń, Home Assistant wykorzystuje specyficzny model danych, którego podstawą są poniższe komponenty:
 
-- *Integracje (Integrations):* Są to moduły oprogramowania umożliwiające komunikację Home Assistant z zewnętrznymi platformami, urządzeniami lub usługami API.
-- *Urządzenia (Devices):* Reprezentują fizyczne lub logiczne obiekty w systemie. Jedno urządzenie (np. wielofunkcyjny czujnik) może składać się z wielu encji (np. czujnika temperatury, czujnika wilgotności i czujnika ruchu).
-- *Encje (Entities):* To najmniejsze jednostki danych. Każda encja reprezentuje konkretną funkcję lub właściwość (np. stan włącznika, odczyt temperatury). Encje posiadają stany (States) oraz atrybuty, które są przechowywane w bazie danych systemu.
-- *Obszary (Areas):* Pozwalają na logiczne grupowanie urządzeń i encji według ich fizycznej lokalizacji w domu (np. salon, kuchnia, sypialnia). Umożliwia to łatwiejsze zarządzanie grupami urządzeń, np. wyłączenie wszystkich świateł w danym pomieszczeniu jedną komendą.
+- *Integracje* to moduły oprogramowania umożliwiające komunikację z zewnętrznymi platformami, urządzeniami lub usługami API.
+- *Urządzenia* są reprezentowane przez fizyczne lub logiczne obiekty w systemie. Jedno urządzenie (np. wielofunkcyjny czujnik) może składać się z wielu encji (np. czujnika temperatury, czujnika wilgotności i czujnika ruchu).
+- *Encje* to najmniejsze jednostki danych. Każda encja reprezentuje konkretną funkcję lub właściwość (np. stan włącznika, odczyt temperatury). Encje posiadają również stany oraz atrybuty, które są przechowywane w bazie danych systemu.
+- *Obszary* pozwalają na logiczne grupowanie urządzeń i encji według ich fizycznej lokalizacji w domu (np. garaż). Umożliwia to łatwiejsze zarządzanie grupami urządzeń, np. poprzez wyłączenie wszystkich świateł w danym pomieszczeniu jedną komendą.
 
 === Silnik Automatyzacji
 
-Home Assistant oferuje potężny mechanizm automatyzacji, który pozwala na tworzenie złożonych scenariuszy interakcji między urządzeniami. Każda automatyzacja składa się z trzech podstawowych elementów:
-
-1. *Wyzwalacze (Triggers):* Zdarzenia, które inicjują sprawdzenie automatyzacji (np. wykrycie ruchu, konkretna godzina, zachód słońca).
-2. *Warunki (Conditions):* Opcjonalne kryteria, które muszą zostać spełnione, aby działanie zostało wykonane (np. "tylko jeśli jest po godzinie 22:00" lub "tylko jeśli nikogo nie ma w domu").
-3. *Działania (Actions):* Operacje wykonywane po spełnieniu warunków (np. włączenie światła, wysłanie powiadomienia na telefon).
-
-Uzupełnieniem automatyzacji są *Skrypty*, będące sekwencjami działań wywoływanymi na żądanie, oraz *Sceny*, które pozwalają na natychmiastowe przywrócenie określonego stanu wielu urządzeń jednocześnie (np. scena "Kino" przyciemniająca światła i zasłaniająca rolety).
+Home Assistant posiada mechanizm automatyzacji, który pozwala na tworzenie scenariuszy interakcji między urządzeniami. Każda automatyzacja składa się z trzech podstawowych elementów. Pierwszym z nich są wyzwalacze, które inicjują sprawdzenie automatyzacji. Drugim elementem są warunki, które określają, czy działanie powinno zostać wykonane. Ostatnim elementem są działania, czyli operacje wykonywane po spełnieniu warunków.
 
 === Ekosystem i Rozszerzalność
 
