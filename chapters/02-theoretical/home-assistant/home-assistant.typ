@@ -14,10 +14,10 @@ Architektura systemu opiera się na zdarzeniach (event-driven architecture). Wsz
 
 W celu zachowania interoperacyjności między tysiącami różnych urządzeń, Home Assistant wykorzystuje sformalizowany model danych, którego podstawą są następujące komponenty:
 
-- *Integracje (Integrations):* Są to moduły oprogramowania umożliwiające komunikację Home Assistant z zewnętrznymi platformami, urządzeniami lub usługami API. Na przykład integracja "Philips Hue" pozwala systemowi porozumiewać się z mostkiem Hue Bridge, a tym samym sterować oświetleniem tego producenta.
+- *Integracje (Integrations):* Są to moduły oprogramowania umożliwiające komunikację Home Assistant z zewnętrznymi platformami, urządzeniami lub usługami API.
 - *Urządzenia (Devices):* Reprezentują fizyczne lub logiczne obiekty w systemie. Jedno urządzenie (np. wielofunkcyjny czujnik) może składać się z wielu encji (np. czujnika temperatury, czujnika wilgotności i czujnika ruchu).
 - *Encje (Entities):* To najmniejsze jednostki danych. Każda encja reprezentuje konkretną funkcję lub właściwość (np. stan włącznika, odczyt temperatury). Encje posiadają stany (States) oraz atrybuty, które są przechowywane w bazie danych systemu.
-- *Obszary (Areas):* Pozwalają na logiczne grupowanie urządzeń i encji według ich fizycznej lokalizacji w domu (np. salon, kuchnia, sypialnia). Umożliwia to łatwiejsze zarządzanie grupami urządzeń, np. wyłączenie wszystkich świateł v danym pomieszczeniu jedną komendą.
+- *Obszary (Areas):* Pozwalają na logiczne grupowanie urządzeń i encji według ich fizycznej lokalizacji w domu (np. salon, kuchnia, sypialnia). Umożliwia to łatwiejsze zarządzanie grupami urządzeń, np. wyłączenie wszystkich świateł w danym pomieszczeniu jedną komendą.
 
 === Silnik Automatyzacji
 
@@ -49,6 +49,6 @@ Głównym sposobem interakcji z systemem jest pulpit nawigacyjny (Dashboard), op
 Home Assistant wspiera szeroki wachlarz protokołów komunikacyjnych, co czyni go prawdziwym centrum inteligentnego domu. Do najpopularniejszych należą:
 - *Wi-Fi:* Wykorzystywany przez wiele urządzeń IoT, często poprzez protokół MQTT.
 - *Zigbee i Z-Wave:* Energooszczędne protokoły typu mesh, idealne dla czujników bateryjnych.
-- *Matter:* Najnowszy standard interoperacyjności, wspierany przez największych graczy rynkowych, którego Home Assistant był jednym z wczesnych propagatorów.
+- *Matter:* Najnowszy standard, wspierany przez największe firmy na rynku.
 
 Dzięki swojej elastyczności i otwartości, Home Assistant jest obecnie uznawany za jedną z najbardziej wszechstronnych platform do budowy zaawansowanych systemów Smart Home, stanowiąc doskonałą bazę do badań naukowych i realizacji projektów inżynierskich.

@@ -17,9 +17,9 @@ Cel główny realizowany jest przez następujące cele szczegółowe:
 
 + *Przegląd i dobór technologii* -- analiza dostępnych platform automatyki domowej i rozwiązań sprzętowych pod kątem ich przydatności do realizacji systemu działającego lokalnie, bez zależności od zewnętrznej infrastruktury chmurowej.
 
-+ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker, wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant jako centralnego systemu zarządzania.
++ *Implementacja infrastruktury serwerowej* -- instalacja i konfiguracja środowiska serwerowego opartego na systemie Debian z platformą Docker, wdrożenie brokera MQTT Mosquitto oraz platformy Home Assistant.
 
-+ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie firmware dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego.
++ *Opracowanie oprogramowania węzłów IoT* -- zaprojektowanie i zaimplementowanie oprogramowania dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32: węzła sensorowego publikującego dane telemetryczne oraz węzła wykonawczego.
 
 + *Weryfikacja integracji systemu* -- potwierdzenie poprawności przepływu danych między warstwą fizyczną (ESP32), warstwą komunikacyjną (Mosquitto) a warstwą aplikacyjną (Home Assistant), w tym działania automatyzacji i wizualizacji danych.
 
@@ -35,9 +35,9 @@ Praca składa się z pięciu rozdziałów merytorycznych, których zawartość p
 
 *Rozdział 2 -- Podstawy teoretyczne* zawiera przegląd kluczowych technologii i narzędzi wykorzystanych w projekcie. Omówiono architekturę i filozofię platformy Home Assistant, zasadę działania protokołu MQTT wraz z jego mechanizmami jakości usług (QoS), retained messages i LWT, dostępne rozwiązania sprzętowe dla ekosystemu Smart Home oraz platformę Docker jako środowisko konteneryzacji.
 
-*Rozdział 3 -- Implementacja projektu i realizacja systemu* opisuje praktyczną część pracy. Przedstawiono ogólną architekturę trójwarstwowego systemu, a następnie krok po kroku opisano proces przygotowania środowiska serwerowego (instalacja Debian, Docker), wdrożenie brokera MQTT i platformy Home Assistant, a także implementację oprogramowania obu węzłów IoT -- sensorowego (Node-1) i wykonawczego z mechanizmem Self-Discovery (Node-2).
+*Rozdział 3 -- Implementacja projektu i realizacja systemu* opisuje praktyczną część pracy. Przedstawiono ogólną architekturę trójwarstwowego systemu, a następnie krok po kroku opisano proces przygotowania środowiska serwerowego (instalacja Debian, Docker), wdrożenie brokera MQTT i platformy Home Assistant, a także implementację oprogramowania obu węzłów IoT -- sensorowego (Node-1) i wykonawczego (Node-2).
 
 *Rozdział 4 -- Badania bezpieczeństwa systemu* poświęcony jest analizie bezpieczeństwa wdrożonego rozwiązania. Opisano stanowisko badawcze z wydzieloną podsiecią IoT, a następnie zaprezentowano wyniki testów przeprowadzonych w warstwie sieciowej (Layer 3) -- weryfikacja izolacji sieci w trzech scenariuszach konfiguracyjnych -- oraz w warstwie aplikacji (Layer 4+) -- testy uwierzytelniania MQTT i zdalnego dostępu przez VPN Tailscale.
 
-*Rozdział 5 -- Podsumowanie* zawiera syntetyczne zestawienie osiągniętych wyników, ocenę stopnia realizacji celów pracy oraz wnioski dotyczące możliwości dalszego rozwoju systemu.
+*Rozdział 5 -- Podsumowanie* zawiera zestawienie osiągniętych wyników, ocenę stopnia realizacji celów pracy oraz wnioski dotyczące możliwości dalszego rozwoju systemu.
 
