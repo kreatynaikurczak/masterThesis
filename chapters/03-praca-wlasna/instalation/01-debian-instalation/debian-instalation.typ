@@ -1,10 +1,10 @@
 === Instalacja systemu operacyjnego Debian na laptopie Lenovo T470
 
-Pierwszym etapem prac praktycznych było przygotowanie środowiska systemowego. Zdecydowano się na wybór dystrybucji Debian GNU/Linux w wersji 12 (Bookworm), która charakteryzuje się wysoką stabilnością oraz szerokim wsparciem społeczności, co jest kluczowe w projektach o charakterze badawczym i inżynierskim.
+Pierwszym etapem prac praktycznych było przygotowanie środowiska systemowego. Zdecydowano się na wybór dystrybucji Debian GNU/Linux, która charakteryzuje się wysoką stabilnością oraz szerokim wsparciem społeczności, co jest kluczowe w projektach o charakterze badawczym i inżynierskim.
 
 ==== Charakterystyka sprzętowa
 
-Proces instalacji przeprowadzono na laptopie Lenovo ThinkPad T470. Model ten jest powszechnie ceniony za wysoką kompatybilność z systemami z rodziny Linux. Kluczowe parametry techniczne wykorzystanego urządzenia zestawiono poniżej:
+Proces instalacji przeprowadzono na laptopie Lenovo ThinkPad T470. Kluczowe parametry techniczne tego urządzenia zestawiono poniżej:
 - Procesor: Intel Core i5-7300U,
 - Pamięć RAM: 16 GB DDR4,
 - Dysk: 256 GB SSD NVMe,
