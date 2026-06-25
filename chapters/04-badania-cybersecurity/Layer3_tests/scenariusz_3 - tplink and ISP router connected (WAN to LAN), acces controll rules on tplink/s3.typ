@@ -31,19 +31,16 @@ Wyniki testów komunikacyjnych przeprowadzonych z laptopa testowego (`192.168.8.
 ==== Analiza wyników i wnioski
 
 1. *Komunikacja lokalna (Wi-Fi)*:
-   Ping do adresu `192.168.8.100` zakończył się sukcesem. Wynika to z faktu, że reguła kontroli dostępu na TP-Link dotyczy wyłącznie interfejsu WAN. Komunikacja wewnątrz sieci LAN/WLAN nie jest filtrowana przez reguły zapory sieciowej routera. Umożliwia to mikrokontrolerom ESP bezproblemową i bezpośrednią komunikację z serwerem Debian (brokerem MQTT) na interfejsie bezprzewodowym.
-   
+  Ping do adresu `192.168.8.100` zakończył się sukcesem. Wynika to z faktu, że reguła kontroli dostępu na TP-Link dotyczy wyłącznie interfejsu WAN. Komunikacja wewnątrz sieci LAN/WLAN nie jest filtrowana przez reguły zapory sieciowej routera. Umożliwia to mikrokontrolerom ESP bezproblemową i bezpośrednią komunikację z serwerem Debian (brokerem MQTT) na interfejsie bezprzewodowym.
+
 2. *Komunikacja z siecią nadrzędną (Ethernet)*:
-   Próba pingowania adresu `192.168.1.17` (interfejs przewodowy serwera) zakończyła się całkowitym niepowodzeniem (100% strat pakietów). Router TP-Link, po odebraniu pakietu zaadresowanego do sieci `192.168.1.0/24`, dopasował go do zdefiniowanej reguły blokującej i odrzucił go przed wysłaniem na interfejs WAN. Cel izolacji został osiągnięty.
-   
+  Próba pingowania adresu `192.168.1.17` (interfejs przewodowy serwera) zakończyła się całkowitym niepowodzeniem (100% strat pakietów). Router TP-Link, po odebraniu pakietu zaadresowanego do sieci `192.168.1.0/24`, dopasował go do zdefiniowanej reguły blokującej i odrzucił go przed wysłaniem na interfejs WAN. Cel izolacji został osiągnięty.
+
 3. *Komunikacja z siecią Internet*:
-   Ping do adresu `8.8.8.8` przebiegł pomyślnie. Ponieważ cel ten nie pasował do zdefiniowanej reguły blokującej (sieć `192.168.1.0/24`), ruch został przetłumaczony (NAT) i przesłany dalej do bramy ISP, a stamtąd do internetu.
+  Ping do adresu `8.8.8.8` przebiegł pomyślnie. Ponieważ cel ten nie pasował do zdefiniowanej reguły blokującej (sieć `192.168.1.0/24`), ruch został przetłumaczony (NAT) i przesłany dalej do bramy ISP, a stamtąd do internetu.
 
 ==== Wnioski dotyczące bezpieczeństwa
 
-Konfiguracja przetestowana w Scenariuszu 3 stanowi rekomendowaną metodę wdrażania bezpiecznych systemów automatyki domowej w środowisku domowym. Zapewnia ona optymalną równowagę między bezpieczeństwem a funkcjonalnością:
+Konfiguracja przetestowana w Scenariuszu 3 stanowi rekomendowaną metodę wdrażania bezpiecznych systemów automatyki domowej w środowisku domowym. Ta konfiguracja zapewnia skutecną izolację, dzięku czemu ewentualne przejęcie kontroli przez napastnika nad dowolnym urządzeniem IoT (np. mikrokontrolerem ESP) nie daje mu możliwości skanowania, komunikacji ani atakowania urządzeń znajdujących się w głównej domowej sieci LAN. Ponadto, dzięki zachowaniu funkcjonalności lokalnej i zdalnej urządzenia IoT mogą komunikować się z lokalnym brokerem MQTT na adresie `192.168.8.100`, a jednocześnie zachowują dostęp do internetu, co umożliwia im np. synchronizację czasu (NTP). Ten scenariusz zapewnia optymalną równowagę między bezpieczeństwem a funkcjonalnością.
 
-- *Skuteczna izolacja*: Ewentualne przejęcie kontroli przez napastnika nad dowolnym urządzeniem IoT (np. mikrokontrolerem ESP) nie daje mu możliwości skanowania, komunikacji ani atakowania urządzeń znajdujących się w głównej domowej sieci LAN.
-- *Funkcjonalność lokalna i zdalna*: Urządzenia IoT mogą komunikować się z lokalnym brokerem MQTT na adresie `192.168.8.100`, a jednocześnie zachowują dostęp do internetu, co umożliwia im np. synchronizację czasu (NTP), pobieranie aktualizacji oprogramowania (OTA) czy komunikację z chmurami zewnętrznymi (np. Home Assistant Cloud, Blynk).
-
-Warto zauważyć, że w tej konfiguracji serwer Debian pełni rolę tzw. "bastionu" (dual-homed bastion host). Z racji podłączenia do obu podsieci stanowi on krytyczny punkt architektury bezpieczeństwa. Jeśli serwer Debian zostanie skompromitowany, napastnik uzyska dostęp do obu sieci. W związku z tym zabezpieczenie samego serwera (np. poprzez reguły firewall `ufw` na serwerze, wyłączenie niepotrzebnych usług, silne uwierzytelnianie) musi być traktowane priorytetowo.
+Warto zauważyć, że w tej konfiguracji serwer Debian pełni rolę tzw. "dual-homed host". Z racji podłączenia do obu podsieci stanowi on krytyczny punkt architektury bezpieczeństwa. Jeśli serwer Debian zostanie przejęty, napastnik uzyska dostęp do obu sieci. W związku z tym zabezpieczenie samego serwera (np. poprzez reguły firewall `ufw` na serwerze, wyłączenie niepotrzebnych usług, silne uwierzytelnianie) musi być traktowane priorytetowo.

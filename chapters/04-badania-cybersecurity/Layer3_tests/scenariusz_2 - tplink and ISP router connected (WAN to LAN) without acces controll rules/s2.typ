@@ -26,13 +26,13 @@ Celem testu było sprawdzenie, czy domyślne mechanizmy routingu i NAT na router
 ==== Analiza wyników i wnioski
 
 1. *Komunikacja lokalna (Wi-Fi)*:
-   Ping do adresu `192.168.8.100` przebiegł pomyślnie. Zmiana fizycznej konfiguracji routera (podłączenie portu WAN) nie wpłynęła na komunikację wewnątrz lokalnego przełącznika i punktu dostępowego Wi-Fi routera TP-Link.
-   
+  Ping do adresu `192.168.8.100` przebiegł pomyślnie. Zmiana fizycznej konfiguracji routera (podłączenie portu WAN) nie wpłynęła na komunikację wewnątrz lokalnego przełącznika i punktu dostępowego Wi-Fi routera TP-Link.
+
 2. *Komunikacja z siecią nadrzędną (Ethernet)*:
-   Próba pingowania interfejsu przewodowego serwera (`192.168.1.17`) zakończyła się *sukcesem* (0% strat pakietów). Czas odpowiedzi (RTT ok. 3,8 ms) był bardzo niski ze względu na bezpośrednie połączenie kablowe routerów. Wartość pola TTL w pakietach zwrotnych wyniosła 63. Ponieważ domyślna wartość TTL dla systemów operacyjnych Linux wynosi 64, zmniejszenie jej o 1 oznacza, że pakiet przeszedł przez dokładnie jedno urządzenie pośredniczące (router TP-Link).
-   
+  Próba pingowania interfejsu przewodowego serwera (`192.168.1.17`) zakończyła się *sukcesem* (0% strat pakietów). Czas odpowiedzi (RTT ok. 3,8 ms) był bardzo niski ze względu na bezpośrednie połączenie kablowe routerów. Wartość pola TTL w pakietach zwrotnych wyniosła 63. Ponieważ domyślna wartość TTL dla systemów operacyjnych Linux wynosi 64, zmniejszenie jej o 1 oznacza, że pakiet przeszedł przez dokładnie jedno urządzenie pośredniczące (router TP-Link).
+
 3. *Komunikacja z siecią Internet*:
-   Ping do adresu `8.8.8.8` również zakończył się sukcesem. Urządzenie z sieci IoT bez przeszkód komunikowało się z zewnętrznym internetem przez kaskadę routerów (TP-Link oraz router ISP).
+  Ping do adresu `8.8.8.8` również zakończył się sukcesem. Urządzenie z sieci IoT bez przeszkód komunikowało się z zewnętrznym internetem przez kaskadę routerów (TP-Link oraz router ISP).
 
 ==== Wykazanie luki bezpieczeństwa
 
@@ -41,4 +41,4 @@ Wyniki tego testu dowodzą obecności poważnej luki w zabezpieczeniach domyśln
 - *Jednokierunkowa ochrona (Ingress)*: Mechanizm NAT (Network Address Translation) realizowany przez router TP-Link chroni sieć IoT przed bezpośrednim dostępem inicjowanym z sieci nadrzędnej (`192.168.1.0/24`). Urządzenia z sieci domowej nie mogą bezpośrednio nawiązać połączenia z mikrokontrolerami ESP (chyba że zostaną skonfigurowane reguły przekierowania portów).
 - *Brak izolacji ruchu wychodzącego (Egress)*: Router TP-Link traktuje podsieć `192.168.1.0/24` (sieć domową/ISP) jako część interfejsu WAN, czyli jako sieć zewnętrzną. W związku z tym domyślnie zezwala na trasowanie i translację (NAT) każdego ruchu wychodzącego z sieci IoT do sieci domowej.
 
-Konfiguracja ta stwarza wysokie ryzyko dla bezpieczeństwa. Jeśli napastnik przejmie kontrolę nad podatnym mikrokontrolerem ESP (np. poprzez lukę w oprogramowaniu lub atak na protokół komunikacyjny), może on potraktować to urządzenie jako punkt wyjścia (pivot) do dalszej eksploracji i ataków na urządzenia w sieci domowej (`192.168.1.0/24`), takie jak komputery osobiste, serwery NAS czy systemy monitoringu wizyjnego.
+Konfiguracja ta stwarza wysokie ryzyko dla bezpieczeństwa. Jeśli napastnik przejmie kontrolę nad podatnym mikrokontrolerem ESP (np. poprzez lukę w oprogramowaniu lub atak na protokół komunikacyjny), może on potraktować to urządzenie jako punkt wyjścia do dalszej eksploracji i ataków na urządzenia w sieci domowej (`192.168.1.0/24`), takie jak komputery osobiste, serwery NAS czy systemy monitoringu wizyjnego.

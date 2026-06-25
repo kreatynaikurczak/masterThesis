@@ -1,6 +1,6 @@
 == Testy w warstwie aplikacji (Layer 4+) -- Kontrola dostępu i zdalny dostęp
 
-Niniejsza sekcja opisuje mechanizmy bezpieczeństwa działające na poziomie warstwy aplikacji, uzupełniające izolację sieciową opisaną w poprzedniej sekcji. Przeanalizowano dwa niezależne mechanizmy kontroli dostępu: uwierzytelnianie brokera MQTT za pomocą hasła oraz bezpieczny zdalny dostęp do systemu Home Assistant za pośrednictwem sieci VPN Tailscale.
+Teraz przejdzemy do mechanizmów bezpieczeństwa działających na poziomie warstwy aplikacji, uzupełniających izolację sieciową opisaną w poprzedniej sekcji. Przeanalizowano dwa niezależne mechanizmy kontroli dostępu: uwierzytelnianie brokera MQTT za pomocą hasła oraz bezpieczny zdalny dostęp do systemu Home Assistant za pośrednictwem sieci VPN Tailscale.
 
 === Uwierzytelnianie MQTT za pomocą hasła
 
@@ -25,7 +25,7 @@ Broker odmówił połączenia, zwracając kod błędu `Connection Refused: not a
 *Test 2 -- połączenie z prawidłowymi poświadczeniami (klient autoryzowany):*
 
 ```bash
-mosquitto_sub -h 192.168.8.100 -t "#" -u "<użytkownik>" -P "<hasło>"
+mosquitto_sub -h 192.168.8.100 -t "#" -u "<michal>" -P "<michal>"
 ```
 
 Połączenie zostało nawiązane pomyślnie. Klient zaczął odbierać wiadomości publikowane przez urządzenia ESP w systemie.
@@ -56,7 +56,7 @@ Schemat przepływu ruchu przy zdalnym dostępie:
 
 #figure(
   image("images/tailscale_network.jpg", width: 45%),
-  caption: [Widok aplikacji mobilnej Tailscale -- sieć mesh z widocznymi węzłami: smartfonem (`galaxy-s20-fe-5g`), laptopem (`angelo-thinkpad-t470-w10dg`) oraz serwerem Debian (`debian-server`, `100.80.238.31`)]
+  caption: [Widok aplikacji mobilnej Tailscale -- sieć mesh z widocznymi węzłami: smartfonem (`galaxy-s20-fe-5g`), laptopem (`angelo-thinkpad-t470-w10dg`) oraz serwerem Debian (`debian-server`, `100.80.238.31`)],
 ) <fig-tailscale-network>
 
 ==== Wyniki testu
@@ -69,7 +69,7 @@ Z poziomu smartfona (`galaxy-s20-fe-5g`, `100.115.49.51`) połączonego z sieci�
 
 #figure(
   image("images/Interfejs Home Assistant z smartphona.jpg", width: 45%),
-  caption: [Interfejs Home Assistant otwarty w przeglądarce smartfona (`galaxy-s20-fe-5g`) po połączeniu przez sieć Tailscale. Adres IP serwera Debian w sieci Tailscale: `100.80.238.31`]
+  caption: [Interfejs Home Assistant otwarty w przeglądarce smartfona (`galaxy-s20-fe-5g`) po połączeniu przez sieć Tailscale. Adres IP serwera Debian w sieci Tailscale: `100.80.238.31`],
 ) <interface-home-assistant-tailscale>
 
 
@@ -77,4 +77,4 @@ Z poziomu smartfona (`galaxy-s20-fe-5g`, `100.115.49.51`) połączonego z sieci�
 
 Na routerze ISP nie skonfigurowano przekierowania portów (port forwarding) dla portu 8123. Próba połączenia z zewnętrznego adresu IP serwera na porcie 8123 zakończyła się przekroczeniem limitu czasu oczekiwania (`Connection timed out`) -- usługa nie jest widoczna dla zewnętrznych klientów.
 
-*Wnioski:* Zastosowanie Tailscale jako warstwy dostępu zdalnego eliminuje konieczność eksponowania usług domowych w publicznej sieci Internet. Całość ruchu jest szyfrowana end-to-end przez WireGuard, a dostęp możliwy jest wyłącznie dla urządzeń uwierzytelnionych w ramach konta Tailscale. Rozwiązanie to stanowi znaczące wzmocnienie bezpieczeństwa w porównaniu z tradycyjnym przekierowaniem portów.
+*Wnioski:* Zastosowanie Tailscale jako warstwy dostępu zdalnego eliminuje konieczność wystawiania usług domowych do internetu. Całość ruchu jest szyfrowana end-to-end przez WireGuard, a dostęp możliwy jest wyłącznie dla urządzeń uwierzytelnionych w ramach konta Tailscale. Rozwiązanie to stanowi znaczące wzmocnienie bezpieczeństwa w porównaniu z tradycyjnym przekierowaniem portów.

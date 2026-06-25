@@ -2,13 +2,13 @@
 
 == Wstęp i opis stanowiska badawczego
 
-Celem tego rozdziału jest przeprowadzenie testów bezpieczeństwa zaprojektowanego i wdrożonego systemu automatyki domowej, opartego na mikrokontrolerach ESP oraz protokole MQTT. Ze względu na podatność urządzeń Internetu Rzeczy (IoT), które często posiadają ograniczone zasoby obliczeniowe i mogą być podatne na różnego rodzaju ataki sieciowe, kluczowym elementem ochrony systemu jest zapewnienie odpowiedniej izolacji sieciowej na poziomie warstwy 3 (sieciowej) oraz kontrola dostępu w wyższych warstwach modelu OSI/ISO.
+Celem tego rozdziału jest przeprowadzenie testów bezpieczeństwa zaprojektowanego i wdrożonego systemu automatyki domowej, opartego na mikrokontrolerach ESP oraz protokole MQTT. Ze względu na podatność urządzeń Internetu Rzeczy, które często mogą być podatne na różnego rodzaju ataki sieciowe, kluczowym elementem ochrony systemu jest zapewnienie odpowiedniej izolacji sieciowej na poziomie warstwy 3 (sieciowej) oraz kontrola dostępu w wyższych warstwach modelu OSI/ISO.
 
-W celu zasymulowania rzeczywistych warunków pracy systemu oraz potencjalnych zagrożeń, przygotowano dedykowane stanowisko badawcze. Głównym założeniem projektowym było odseparowanie urządzeń IoT od głównej sieci domowej użytkownika, w której mogą znajdować się wrażliwe urządzenia (np. komputery osobiste, serwery NAS). Do realizacji tego zadania wykorzystano dwuinterfejsowy (dual-homed) serwer oparty na systemie Debian oraz router TP-Link, który tworzy osobną podsieć dla urządzeń automatyki domowej.
+W celu zasymulowania rzeczywistych warunków pracy systemu oraz potencjalnych zagrożeń, przygotowano dedykowane stanowisko badawcze. Głównym założeniem projektowym było odseparowanie urządzeń IoT od głównej sieci domowej użytkownika, w której mogą znajdować się wrażliwe urządzenia (np. komputery osobiste, serwery NAS). Do realizacji tego zadania wykorzystano dwuinterfejsowy serwer oparty na systemie Debian oraz router TP-Link, który tworzy osobną podsieć dla urządzeń automatyki domowej.
 
 Stanowisko badawcze składa się z następujących komponentów:
 1. *Dwuinterfejsowy serwer Debian*:
-  - Pełni rolę centralnej jednostki zarządzającej automatyką domową (broker MQTT, serwer aplikacji).
+  - Pełni rolę centralnej jednostki zarządzającej automatyką domową. Znajduje sie na nim broker MQTT oraz Home Assistant.
   - Wyposażony jest w dwie karty sieciowe:
     - Interfejs bezprzewodowy (Wi-Fi) o adresie IP `192.168.8.100`, podłączony do sieci IoT.
     - Interfejs przewodowy (Ethernet) o adresie IP `192.168.1.17`, podłączony do sieci domowej/ISP.
@@ -24,4 +24,4 @@ Stanowisko badawcze składa się z następujących komponentów:
   - Adres bramy domyślnej w sieci ISP to `192.168.1.1`. Jako cel testów dostępności usług zewnętrznych wykorzystano publiczny serwer DNS Google o adresie IP `8.8.8.8`.
 
 
-W dalszej części rozdziału przedstawiono szczegółową analizę przeprowadzonych testów bezpieczeństwa podzielonych na testy w warstwie sieciowej (Layer 3) oraz testy w warstwie aplikacji (Layer 4).
+W dalszej części rozdziału przedstawiono szczegółową analizę przeprowadzonych testów bezpieczeństwa podzielonych na testy w warstwie sieciowej oraz testy w warstwie aplikacji.
