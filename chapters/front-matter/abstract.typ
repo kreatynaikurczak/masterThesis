@@ -1,8 +1,8 @@
 #heading(level: 1, numbering: none)[Streszczenie] <streszczenie>
 
-Przedmiotem pracy dyplomowej jest projekt oraz implementacja serwerowego systemu automatyki domowej zbudowanego w oparciu o mikrokontrolery z rodziny ESP oraz protokół komunikacyjny MQTT. Głównym celem projektu było opracowanie skalowalnej oraz działającej lokalnie architektury inteligentnego domu, a następnie poddanie jej badaniom pod kątem bezpieczeństwa w sieci.
+Przedmiotem pracy dyplomowej jest implementacja serwerowego systemu automatyki domowej zbudowanego w oparciu o mikrokontrolery z rodziny ESP oraz protokół komunikacyjny MQTT. Głównym celem projektu było opracowanie skalowalnej oraz działającej lokalnie architektury, a następnie poddanie jej badaniom pod kątem bezpieczeństwa w sieci.
 
-W części teoretycznej zostaje opisana platforma Home Assistant, która jest centralnym środowiskiem zarządzania automatyką domową. Następnie scharakteryzowany zostaje protokół MQTT, czyli sposób na wymianę danych między urządzeniami Internetu Rzeczy. Omówiona zostaje również platforma Docker, która jest narzędziem konteneryzacji usług serwerowych. Uzupełnieniem tego przeglądu jest zestawienie dostępnych rozwiązań sprzętowych dla systemów tego typu.
+W części teoretycznej zostaje opisana platforma Home Assistant, która jest centralnym środowiskiem zarządzania automatyką domową. Dalej omówiona zostaje platforma Docker, która jest narzędziem konteneryzacji usług serwerowych. Następnie scharakteryzowany zostaje również protokół komunikacyjny MQTT. Uzupełnieniem tego przeglądu jest zestawienie dostępnych rozwiązań sprzętowych dla systemów tego typu.
 
 W części praktycznej zaprojektowano i uruchomiono trójwarstwowy system automatyki domowej. Warstwę fizyczną tworzą mikrokontrolery ESP32, które podzielono ze względu na zastosowanie. Pierwszy z nich to czujnik publikujący dane telemetryczne, a drugi to element wykonawczy. Rolę warstwy sieciowej pełni broker MQTT Mosquitto, a warstwę aplikacyjną stanowi platforma Home Assistant uruchomiona w kontenerze Docker na serwerze z systemem Debian.
 
