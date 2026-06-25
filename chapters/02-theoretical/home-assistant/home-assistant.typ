@@ -21,15 +21,7 @@ W celu zachowania możliwości operacyjnych między dużą liczbą różnych urz
 
 === Silnik Automatyzacji
 
-Home Assistant posiada mechanizm automatyzacji, który pozwala na tworzenie scenariuszy interakcji między urządzeniami. Każda automatyzacja składa się z trzech podstawowych elementów. Pierwszym z nich są wyzwalacze, które inicjują sprawdzenie automatyzacji. Drugim elementem są warunki, które określają, czy działanie powinno zostać wykonane. Ostatnim elementem są działania, czyli operacje wykonywane po spełnieniu warunków.
-
-=== Ekosystem i Rozszerzalność
-
-System Home Assistant wyróżnia się ogromnym ekosystemem, który znacznie wykracza poza standardowe integracje:
-
-- *Dodatki (Add-ons):* To kontenery Dockerowe uruchamiane równolegle z Home Assistant, dostarczające dodatkowe usługi, takie jak serwer MQTT (Mosquitto), bazy danych (InfluxDB) czy narzędzia do wizualizacji (Grafana).
-- *HACS (Home Assistant Community Store):* Nieoficjalne repozytorium społecznościowe, pozwalające na instalację niestandardowych integracji oraz elementów interfejsu graficznego, które nie zostały jeszcze włączone do oficjalnej dystrybucji.
-- *Blueprints:* Gotowe szablony automatyzacji, które użytkownicy mogą łatwo importować i konfigurować bez konieczności samodzielnego tworzenia logiki od podstaw.
+Home Assistant posiada mechanizm automatyzacji, który pozwala na tworzenie scenariuszy interakcji między urządzeniami. Każda automatyzacja składa się z trzech podstawowych elementów. Pierwszym z nich są wyzwalacze z ang. *Triggers*, które inicjują sprawdzenie automatyzacji. Drugim elementem są warunki z ang. *Conditions*, które określają, czy działanie powinno zostać wykonane. Ostatnim elementem są działania, czyli operacje wykonywane po spełnieniu warunków.
 
 === Interfejs Użytkownika i Komunikacja
 
