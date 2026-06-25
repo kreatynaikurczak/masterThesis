@@ -25,21 +25,20 @@ Dzięki takiemu podejściu, interfejs użytkownika aktualizuje status urządzeni
 
 ==== Logika operacyjna i synchronizacja
 
-Proces obsługi polecenia przez Node-2 przebiega w następujących krokach:
+Proces obsługi polecenia przez Node-2 przebiega w następujących sposób:
 1. *Odbiór:* Węzeł subskrybuje temat `esp32/actuator/#`. Po otrzymaniu wiadomości `"ON"`, następuje wysterowanie odpowiedniego pinu GPIO.
 2. *Weryfikacja:* System sprawdza stan logiczny wyjścia.
 3. *Potwierdzenie:* Węzeł publikuje aktualny stan na temat `esp32/actuator/state`.
 
-Zastosowanie flagi *Retain* dla komunikatów stanu pozwala na natychmiastowe odzyskanie poprawnego statusu urządzenia przez Home Assistant nawet po restarcie serwera, co zwiększa ogólną niezawodność całego ekosystemu IoT.
 
 ==== Automatyzacja i zcentralizowane zarządzanie stanem
 
-W zaimplementowanej architekturze modularnej kluczowym aspektem jest zcentralizowane sterowanie logiką systemu. Zamiast bezpośredniej komunikacji między węzłem czujnika a węzłem wykonawczym (typ *peer-to-peer*), oba moduły komunikują się wyłącznie za pośrednictwem systemu Home Assistant poprzez protokół MQTT. Home Assistant pełni tutaj rolę *jedynego źródła prawdy* (*Single Source of Truth*), co pozwala na zachowanie spójności stanu całego ekosystemu.
+W zaimplementowanej architekturze modularnej kluczowym aspektem jest zcentralizowane sterowanie logiką systemu. Zamiast bezpośredniej komunikacji między węzłem czujnika a węzłem wykonawczym, oba moduły komunikują się wyłącznie za pośrednictwem systemu Home Assistant poprzez protokół MQTT. Home Assistant pełni tutaj rolę jedynego źródła prawdy , co pozwala na zachowanie spójności stanu całego systemu.
 
 Przepływ danych i logiki sterowania odbywa się w następujący sposób:
 1. *Publikacja danych:* Węzeł czujnika (*Sensor Node*) publikuje odczyty temperatury na temat MQTT `esp32/sensor/temperature`.
 2. *Przetwarzanie logiki:* Home Assistant subskrybuje ten temat, analizuje otrzymaną wartość i porównuje ją ze zdefiniowanym progiem. Na tej podstawie system decyduje o zmianie stanu encji `switch.heater_actuator`.
 3. *Sterowanie urządzeniem:* Zmiana stanu encji w Home Assistant powoduje wysłanie odpowiedniego polecenia do węzła wykonawczego (*Node-2*). Węzeł ten nasłuchuje komunikatów sterujących i reaguje wyłącznie na instrukcje pochodzące z systemu nadrzędnego.
-4. *Interakcja użytkownika:* Dzięki centralizacji zmiana stanu urządzenia może nastąpić również ręcznie poprzez przełącznik w interfejsie graficznym (*Dashboard Switch*). W takim przypadku Home Assistant aktualizuje stan encji `switch.heater_actuator`, co automatycznie propaguje się do fizycznego urządzenia.
+4. *Interakcja użytkownika:* Dzięki centralizacji zmiana stanu urządzenia może nastąpić również ręcznie poprzez przełącznik w interfejsie graficznym. W takim przypadku Home Assistant aktualizuje stan encji `switch.heater_actuator`, co automatycznie wysyłane jest do fizycznego urządzenia.
 
 Takie podejście gwarantuje, że logika sterowania jest oddzielona od warstwy sprzętowej, co ułatwia modyfikację algorytmów automatyzacji bez konieczności przeprogramowywania poszczególnych mikrokontrolerów.
