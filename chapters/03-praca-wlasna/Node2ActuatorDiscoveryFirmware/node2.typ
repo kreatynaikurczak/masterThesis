@@ -22,33 +22,6 @@ W systemie zdefiniowano dwa główne kanały dla każdej encji wykonawczej (np. 
 
 Dzięki takiemu podejściu, interfejs użytkownika aktualizuje status urządzenia dopiero po otrzymaniu potwierdzenia z mikrokontrolera. Eliminuje to błędy, gdzie ikona w aplikacji zmienia stan mimo braku fizycznej reakcji urządzenia (np. z powodu chwilowej utraty zasięgu Wi-Fi).
 
-==== Mechanizm MQTT Self-Discovery
-
-Węzeł Node-2 implementuje standard *Home Assistant MQTT Discovery*, co pozwala na całkowitą eliminację konieczności ręcznej edycji plików konfiguracyjnych w systemie nadrzędnym. Natychmiast po uruchomieniu i nawiązaniu połączenia z siecią, mikrokontroler wysyła ramkę konfiguracyjną w formacie JSON na specjalny temat odkrywania (`homeassistant/switch/esp32_heater_actuator/config`).
-
-Poniżej przedstawiono przykładowy ładunek danych (payload) generowany przez węzeł podczas procesu autowykrywania:
-
-```json
-{
-  "name": "Heater Actuator",
-  "unique_id": "esp32_heater_actuator",
-  "command_topic": "esp32/actuator/set",
-  "state_topic": "esp32/actuator/state",
-  "payload_on": "ON",
-  "payload_off": "OFF",
-  "state_on": "ON",
-  "state_off": "OFF",
-  "icon": "mdi:radiator",
-  "device": {
-    "identifiers": ["esp32c3_8291AB"],
-    "name": "Node-2 Actuator Engine",
-    "model": "ESP32-C3 DevKit",
-    "manufacturer": "Espressif"
-  }
-}
-```
-
-Dzięki przesłaniu metadanych takich jak model urządzenia czy producent, Home Assistant automatycznie tworzy nie tylko samą encję sterującą, ale również grupuje ją w ramach logicznego urządzenia. Ułatwia to zarządzanie systemem w miarę dodawania kolejnych modułów wykonawczych.
 
 ==== Logika operacyjna i synchronizacja
 
