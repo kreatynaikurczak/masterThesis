@@ -1,10 +1,10 @@
 #let title-page(
   katedra: "Automatyki i Informatyki E1",
   kierunek: "Infotronika",
-  specjalnosc: "……………………………..",
+  specjalnosc: "brak",
   typ-studiów: "STACJONARNE",
   stopien: "MAGISTERSKA",
-  autor: "Michał Filipiak",
+  autor: "inż. Michał Filipiak",
   temat-pl: "Projekt i implementacja serwerowego systemu automatyki domowej opartego na mikrokontrolerach ESP oraz protokole MQTT",
   temat-en: "Design and implementation of a server home automation system based on ESP microcontrollers and the MQTT protocol",
   opiekun: "dr inż. Paweł Król",
