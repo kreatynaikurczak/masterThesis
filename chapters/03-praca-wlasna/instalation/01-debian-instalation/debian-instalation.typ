@@ -12,12 +12,12 @@ Proces instalacji przeprowadzono na laptopie Lenovo ThinkPad T470. Kluczowe para
 
 #figure(
   image("images/t470.png", width: 80%),
-  caption: [Widok ogólny laptopa Lenovo ThinkPad T470 wykorzystanego w badaniach.],
+  caption: [Widok ogólny laptopa Lenovo ThinkPad T470 wykorzystanego w projekcie jako serwer.],
 ) <fig:t470-hardware>
 
 ==== Przygotowanie nośnika instalacyjnego
 
-Proces rozpoczęto od pobrania oficjalnego obrazu ISO typu „netinst” z serwerów projektu Debian. Wykorzystanie obrazu sieciowego umożliwiło instalację najnowszych wersji pakietów już na etapie wdrażania systemu. Obraz został przeniesiony na nośnik USB o pojemności 16 GB przy użyciu systemowego narzędzia `dd` w środowisku Linux. Operację wykonano przy użyciu następującego polecenia:
+Proces rozpoczęto od pobrania oficjalnego obrazu ISO z serwerów projektu Debian. Wykorzystanie obrazu sieciowego umożliwiło instalację najnowszych wersji pakietów już na etapie wdrażania systemu. Obraz został przeniesiony na nośnik USB o pojemności 16 GB przy użyciu systemowego narzędzia `dd` w środowisku Linux. Operację wykonano przy użyciu następującego polecenia:
 
 ```bash
 sudo dd if=debian-12-netinst-amd64.iso of=/dev/sdX bs=4M status=progress oflag=sync
@@ -25,10 +25,7 @@ sudo dd if=debian-12-netinst-amd64.iso of=/dev/sdX bs=4M status=progress oflag=s
 
 ==== Konfiguracja BIOS/UEFI
 
-Przed przystąpieniem do właściwej instalacji konieczne było dostosowanie ustawień oprogramowania układowego (UEFI) urządzenia. Kluczowe modyfikacje objęły:
-1. Wyłączenie funkcji *Secure Boot*, co zapewnia bezproblemowe ładowanie modułów jądra.
-2. Ustawienie trybu pracy kontrolera pamięci masowej na *AHCI*.
-3. Zmianę priorytetu urządzeń rozruchowych, ustawiając nośnik USB jako nadrzędny.
+Przed przystąpieniem do właściwej instalacji trzeba było dostosować ustawienia UEFI urządzenia. Głównie chodziło o zmianę priorytetu urządzeń rozruchowych w taki sposób, aby nośnik USB był nadrzędny.
 
 ==== Przebieg instalacji
 

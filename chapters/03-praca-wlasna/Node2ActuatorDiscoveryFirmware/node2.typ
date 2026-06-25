@@ -1,26 +1,26 @@
 === Węzeł wykonawczy i silnik autowykrywania (Node-2)
 <wezel-wykonawczy-i-silnik-autowykrywania-node-2>
 
-Drugi zaimplementowany węzeł, nazwany *Node-2*, reprezentuje bardziej zaawansowaną klasę urządzeń krawędziowych (*edge nodes*). W przeciwieństwie do Node-1, który skupiał się na telemetrii, Node-2 pełni rolę inteligentnego sterownika wykonawczego, integrującego mechanizmy dwukierunkowej komunikacji oraz autonomicznej rejestracji w systemie nadrzędnym.
+Drugi zaimplementowany węzeł, nazwany *Node-2*, reprezentuje bardziej zaawansowaną klasę urządzeń. W przeciwieństwie do Node-1, który skupiał się na telemetrii, Node-2 pełni rolę inteligentnego sterownika wykonawczego, integrującego mechanizmy dwukierunkowej komunikacji.
 
 ==== Architektura sprzętowa
 
-Jako platformę sprzętową dla tego węzła wybrano mikrokontroler *ESP32-C3 DevKit*, oparty na otwartej architekturze RISC-V. Wybór ten podyktowany był chęcią przetestowania nowoczesnego standardu układów ESP, które oferują zoptymalizowany pobór mocy oraz wsparcie dla najnowszych mechanizmów bezpieczeństwa przy zachowaniu pełnej kompatybilności z ekosystemem Wi-Fi i MQTT.
+Jako platformę sprzętową dla tego węzła wybrano mikrokontroler *ESP32-C3 DevKit*, oparty na otwartej architekturze RISC-V. Wybór ten podyktowany był chęcią przetestowania nowoczesnego standardu układów ESP, które oferują zoptymalizowany pobór mocy przy zachowaniu kompatybilności z Wi-Fi i MQTT.
 
 #figure(
   image("images/ESP32_C3_MINI-8.jpg", width: 60%),
   caption: [Mikrokontroler ESP32-C3 wykorzystany w module Node-2],
 ) <fig-node2-esp32>
 
-==== Separacja tematów: Polecenia a stan (Command vs State)
+==== Separacja tematów MQTT: Polecenia a stan
 
-Kluczowym elementem logiki komunikacyjnej Node-2 jest pełna separacja tematów sterujących od tematów raportujących stan. Zastosowano architekturę dwukierunkową, aby zapobiec pętlom logicznym oraz zagwarantować bezwzględną synchronizację między stanem faktycznym sprzętu a interfejsem użytkownika.
+Kluczowym elementem logiki komunikacyjnej Node-2 jest pełna separacja tematów sterujących od tematów raportujących stan. Zastosowano architekturę dwukierunkową, żeby zapobiec pętlom logicznym oraz zagwarantować bezwzględną synchronizację między stanem faktycznym sprzętu a interfejsem użytkownika.
 
 W systemie zdefiniowano dwa główne kanały dla każdej encji wykonawczej (np. przekaźnika):
 - *Temat poleceń (`esp32/actuator/set`):* Służy wyłącznie do przesyłania żądań zmiany stanu z Home Assistant do węzła.
 - *Temat stanu (`esp32/actuator/state`):* Służy do raportowania przez węzeł aktualnego potwierdzonego stanu urządzenia.
 
-Dzięki takiemu podejściu, interfejs użytkownika aktualizuje status urządzenia dopiero po otrzymaniu potwierdzenia z mikrokontrolera. Eliminuje to błędy typu "ghost switching", gdzie ikona w aplikacji zmienia stan mimo braku fizycznej reakcji urządzenia (np. z powodu chwilowej utraty zasięgu Wi-Fi).
+Dzięki takiemu podejściu, interfejs użytkownika aktualizuje status urządzenia dopiero po otrzymaniu potwierdzenia z mikrokontrolera. Eliminuje to błędy, gdzie ikona w aplikacji zmienia stan mimo braku fizycznej reakcji urządzenia (np. z powodu chwilowej utraty zasięgu Wi-Fi).
 
 ==== Mechanizm MQTT Self-Discovery
 
