@@ -10,7 +10,7 @@ Fundamentem Home Assistant jest idea polegająca na sterowaniu lokalnym oraz pry
 
 Architektura systemu opiera się na zdarzeniach. Wszystkie interakcje, zmiany stanów urządzeń czy wyzwalacze automatyzacji są przetwarzane przez centralną magistralę zdarzeń.
 
-=== Kluczowe Pojęcia i Model Danych
+=== Kluczowe Pojęcia
 
 W celu zachowania możliwości operacyjnych między dużą liczbą różnych urządzeń, Home Assistant wykorzystuje specyficzny model danych, którego podstawą są poniższe komponenty:
 
@@ -25,14 +25,14 @@ Home Assistant posiada mechanizm automatyzacji, który pozwala na tworzenie scen
 
 === Interfejs Użytkownika i Komunikacja
 
-Głównym sposobem interakcji z systemem jest pulpit nawigacyjny (Dashboard), oparty na silniku Lovelace. Jest on w pełni konfigurowalny i responsywny, co pozwala na tworzenie przejrzystych interfejsów sterowania dostępnych zarówno przez przeglądarkę WWW, jak i dedykowane aplikacje mobilne na systemy Android i iOS. Przykładowy wygląd pulpitu nawigacyjnego przedstawiono na rysunku @fig:ha-dashboard.
+Głównym sposobem interakcji z systemem jest pulpit nawigacyjny z ang. *Dashboard*. Jest on w pełni konfigurowalny i responsywny, co pozwala na tworzenie przejrzystych interfejsów sterowania dostępnych zarówno przez przeglądarkę WWW, jak i dedykowane aplikacje mobilne na systemy Android i iOS. Przykładowy wygląd pulpitu nawigacyjnego przedstawiono na rysunku @fig:ha-dashboard.
 
 #figure(
   image("images/HA-dashboard.png", width: 100%),
   caption: [Przykładowy pulpit nawigacyjny systemu Home Assistant],
 ) <fig:ha-dashboard>
 
-Home Assistant wspiera szeroki wachlarz protokołów komunikacyjnych, co czyni go prawdziwym centrum inteligentnego domu. Do najpopularniejszych należą:
+Jednym z kluczowych aspektów Home Assistant jest jego wszechstronność w zakresie obsługi protokołów komunikacyjnych. Wsparcie dla szerokiego wachlarza protokołów pozwala na integrację z różnorodnymi urządzeniami i systemami. Do najpopularniejszych należą:
 - *Wi-Fi:* Wykorzystywany przez wiele urządzeń IoT, często poprzez protokół MQTT.
 - *Zigbee i Z-Wave:* Energooszczędne protokoły typu mesh, idealne dla czujników bateryjnych.
 - *Matter:* Najnowszy standard, wspierany przez największe firmy na rynku.

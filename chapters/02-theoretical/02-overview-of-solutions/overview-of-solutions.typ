@@ -1,7 +1,7 @@
-Wybór odpowiedniej platformy sprzętowej jest fundamentalną decyzją przy wdrażaniu systemu automatyki domowej opartego na Home Assistant. Jako platforma open-source, Home Assistant został zaprojektowany tak, aby był niezależny od sprzętu, wspierając szeroką gamę architektur — od energooszczędnych komputerów jednopłytkowych opartych na architekturze ARM po wydajne serwery x86-64. Wybór zależy od kilku czynników: złożoności logiki automatyzacji, liczby zintegrowanych urządzeń, potrzeby lokalnego przetwarzania danych (takich jak rozpoznawanie obrazu) oraz pożądanego poziomu niezawodności i redundancji systemu.
+Wybór odpowiedniej platformy sprzętowej jest fundamentalną decyzją przy wdrażaniu systemu automatyki domowej opartego na Home Assistant. Jako platforma open-source, Home Assistant został zaprojektowany tak, aby był niezależny od sprzętu, wspierając szeroką gamę architektur — od energooszczędnych komputerów jednopłytkowych opartych na architekturze ARM po wydajne serwery x86-64. Wybór zależy od złożoności logiki automatyzacji, liczby zintegrowanych urządzeń, potrzeby lokalnego przetwarzania danych oraz pożądanego poziomu niezawodności i redundancji systemu.
 
-=== Kontekst historyczny: Fundamenty informatyki
-Aby zrozumieć obecny krajobraz sprzętu do automatyki domowej, warto spojrzeć wstecz na początki komputerów osobistych. Procesor Intel 8086, wprowadzony w 1978 roku, ustanowił architekturę x86, która do dziś pozostaje dominującą siłą w informatyce. Choć sam 8086 jest zbyt prymitywny dla nowoczesnej automatyki domowej, jego dziedzictwo żyje w potężnych serwerach x86-64, których wielu entuzjastów używa do uruchamiania złożonych instancji Home Assistant.
+=== Kontekst historyczny - Fundamenty informatyki
+Aby zrozumieć obecny krajobraz sprzętu do automatyki domowej, warto spojrzeć wstecz na początki komputerów osobistych. Procesor Intel 8086, wprowadzony w 1978 roku, ustanowił architekturę x86, która do dziś pozostaje dominującą siłą w informatyce. Choć sam 8086 jest zbyt prymitywny dla nowoczesnej automatyki domowej, jego dziedzictwo żyje w potężnych serwerach x86-64, których wielu entuzjastów używa do uruchamiania złożonych systemów Home Assistant.
 
 #figure(
   image("images/Procesor Intel 8086 z 1978.png", width: 60%),
@@ -20,7 +20,7 @@ Seria Raspberry Pi jest najbardziej  wspieraną platformą dla Home Assistant. J
 )
 
 ==== ODROID-C4
-Dla użytkowników wymagających większej stabilności i lepszej wydajności pamięci masowej niż w przypadku konstrukcji Raspberry Pi opartej na kartach microSD, ODROID-C4 stanowi przekonującą alternatywę. Dzięki obsłudze modułów eMMC, ODROID-C4 zapewnia znacznie wyższą niezawodność operacji wejścia/wyjścia dysku, co jest kluczowe dla baz danych SQLite lub MariaDB, których Home Assistant używa do przechowywania historycznych danych o stanie urządzeń.
+Dla użytkowników wymagających większej stabilności i lepszej wydajności pamięci masowej niż w przypadku konstrukcji Raspberry Pi opartej na kartach microSD, ODROID-C4 stanowi przekonującą alternatywę. Dzięki obsłudze modułów eMMC, ODROID-C4 zapewnia znacznie wyższą niezawodność operacji wejścia/wyjścia dysku, co jest kluczowe dla baz danych, których Home Assistant używa do przechowywania historycznych danych o stanie urządzeń.
 
 #figure(
   image("images/ODROID-C4.png", width: 70%),
@@ -32,14 +32,14 @@ Dostrzegając potrzebę prostego punktu wejścia, Nabu Casa (firma stojąca za H
 
 #figure(
   image("images/3D architectural view of the internal hardware components of the Home Assistant Green.png", width: 80%),
-  caption: [Widok architektoniczny 3D wewnętrznych komponentów sprzętowych Home Assistant Green, prezentujący jego zoptymalizowaną konstrukcję.],
+  caption: [Widok architektoniczny 3D wewnętrznych komponentów sprzętowych Home Assistant Green.],
 )
 
 === Rozwiązania wysokowydajne i klasy enterprise
 W miarę jak systemy automatyki domowej rozrastają się i obejmują dziesiątki kamer, złożone modele uczenia maszynowego do wykrywania obiektów oraz liczne usługi zwirtualizowane, ograniczenia komputerów SBC stają się widoczne. W takich przypadkach użytkownicy zwracają się ku mocniejszemu sprzętowi.
 
 ==== Komputery osobiste x86-64
-Wykorzystanie standardowego komputera PC x86-64 lub dedykowanego serwera pozwala na praktycznie nieograniczoną rozbudowę. Systemy te obsługują szybkie pamięci masowe NVMe, duże ilości pamięci RAM i potężne procesory zdolne do obsługi intensywnych zadań, takich jak transkodowanie wideo w czasie rzeczywistym i automatyzacja oparta na sztucznej inteligencji.
+Wykorzystanie standardowego komputera PC x86-64 lub dedykowanego serwera pozwala na praktycznie nieograniczoną rozbudowę. Systemy te obsługują szybkie pamięci masowe NVMe, duże ilości pamięci RAM i potężne procesory zdolne do obsługi bardzo złożonych zadań.
 
 #figure(
   image("images/Generic x86-64 PC.png", width: 70%),

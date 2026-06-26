@@ -15,7 +15,7 @@ Architektura Dockera opiera się na modelu klient-serwer (rysunek @fig:docker-ar
 - *Docker Registry:* Miejsce przechowywania obrazów. Najpopularniejszym publicznym rejestrem jest Docker Hub, ale organizacje często korzystają z prywatnych rejestrów w celu zapewnienia bezpieczeństwa.
 
 #figure(
-  image("images/dockera-architecture.png", width: 90%),
+  image("images/docker-architecture1.png", width: 90%),
   caption: [Architektura platformy Docker i interakcja między jej komponentami],
 ) <fig:docker-architecture>
 
@@ -23,7 +23,7 @@ Architektura Dockera opiera się na modelu klient-serwer (rysunek @fig:docker-ar
 
 W ekosystemie Dockera wyróżnia się kilka fundamentalnych pojęć, które stanowią o jego funkcjonalności:
 
-- *Obraz (Image):* Tylko do odczytu szablon instrukcji służący do tworzenia kontenera. Często obraz bazuje na innym obrazie z dodatkowymi modyfikacjami (np. obraz aplikacji bazujący na obrazie systemu Ubuntu z zainstalowanym serwerem Apache).
+- *Obraz (Image):* Szablon instrukcji tylko do odczytu, służący do tworzenia kontenera. Często obraz bazuje na innym obrazie z dodatkowymi modyfikacjami (np. obraz aplikacji bazujący na obrazie systemu Ubuntu z zainstalowanym serwerem Apache).
 - *Kontener (Container):* Uruchomiona instancja obrazu. Można go tworzyć, uruchamiać, zatrzymywać, przenosić lub usuwać. Kontenery są z definicji ulotne, co oznacza, że dane w nich zapisane zostają utracone po ich usunięciu, chyba że zostaną użyte mechanizmy trwałości danych (wolumeny).
 - *Dockerfile:* Plik tekstowy zawierający zestaw instrukcji, które Docker wykonuje w celu automatycznego zbudowania obrazu. Pozwala to na pełną dokumentację środowiska i łatwą reprodukcję artefaktów.
 - *Wolumeny (Volumes):* Mechanizm służący do trwałego przechowywania danych generowanych i używanych przez kontenery. Wolumeny są zarządzane przez Dockera i są niezależne od cyklu życia samego kontenera.
@@ -37,4 +37,4 @@ Zastosowanie Dockera w procesie wytwórczym oprogramowania niesie ze sobą szere
 3. *Szybkość i wydajność:* Kontenery uruchamiają się w ciągu milisekund, co pozwala na błyskawiczne skalowanie usług i optymalne wykorzystanie infrastruktury.
 4. *Usprawnienie CI/CD:* Docker idealnie wpisuje się w potoki ciągłej integracji i ciągłego wdrażania, umożliwiając automatyczne budowanie i testowanie identycznych artefaktów na każdym etapie cyklu życia aplikacji.
 
-Dzięki tym cechom Docker stał się standardem de facto w nowoczesnym inżynierii oprogramowania, stanowiąc fundament dla architektury mikroserwisowej oraz nowoczesnych systemów automatyki i IoT.
+Jest to zestaw cech, które sprawiają, że Docker stał się standardem w nowoczesnej inżynierii oprogramowania, stanowiąc fundament dla architektury mikroserwisowej oraz nowoczesnych systemów automatyki i IoT.
