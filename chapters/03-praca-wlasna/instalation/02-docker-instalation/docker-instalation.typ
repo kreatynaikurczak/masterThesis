@@ -8,35 +8,26 @@ Po skonfigurowaniu systemu operacyjnego Debian, kolejnym krokiem było wdrożeni
 Proces instalacji przeprowadzono zgodnie z oficjalną dokumentacją, wykorzystując repozytoria producenta w celu zapewnienia dostępu do najnowszych wersji oprogramowania.
 
 1. *Aktualizacja indeksu pakietów i instalacja zależności*:
-   W pierwszej kolejności zainstalowano pakiety umożliwiające bezpieczną komunikację z repozytoriami przez protokół HTTPS:
-   ```bash
-   sudo apt update
-   sudo apt install ca-certificates curl gnupg
-   ```
+  W pierwszej kolejności zainstalowano pakiety umożliwiające bezpieczną komunikację z repozytoriami przez protokół HTTPS:
+  ```bash
+  sudo apt update
+  sudo apt install ca-certificates curl gnupg
+  ```
 
 2. *Dodanie oficjalnego klucza GPG Docker*:
-   Klucz służy do weryfikacji autentyczności pobieranych pakietów:
-   ```bash
-   sudo install -m 0755 -d /etc/apt/keyrings
-   curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-   sudo chmod a+r /etc/apt/keyrings/docker.gpg
-   ```
+  Klucz służy do weryfikacji autentyczności pobieranych pakietów:
+  ```bash
+  sudo install -m 0755 -d /etc/apt/keyrings
+  curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+  sudo chmod a+r /etc/apt/keyrings/docker.gpg
+  ```
 
-3. *Konfiguracja repozytorium*:
-   Dodano wpis do listy źródeł systemowego menedżera pakietów `apt`:
-   ```bash
-   echo \
-     "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-     sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-   ```
-
-4. *Instalacja pakietów Docker*:
-   Po zaktualizowaniu listy repozytoriów, zainstalowano silnik Docker oraz wtyczkę Docker Compose:
-   ```bash
-   sudo apt update
-   sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-   ```
+3. *Instalacja pakietów Docker*:
+  Po zaktualizowaniu listy repozytoriów, zainstalowano silnik Docker oraz wtyczkę Docker Compose:
+  ```bash
+  sudo apt update
+  sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+  ```
 
 ==== Konfiguracja poinstalacyjna
 
