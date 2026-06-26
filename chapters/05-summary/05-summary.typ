@@ -1,21 +1,7 @@
 = Podsumowanie
 <podsumowanie>
 
-Praca dyplomowa poświęcona była zaprojektowaniu, implementacji i weryfikacji bezpieczeństwa serwerowego systemu automatyki domowej opartego na mikrokontrolerach ESP oraz protokole MQTT, zintegrowanego z platformą Home Assistant. Wszystkie sformułowane na wstępie cele zostały zrealizowane.
-
-== Osiągnięte rezultaty
-
-W ramach pracy wykonano następujące zadania:
-
-*Przegląd technologii i dobór komponentów.* Przeprowadzono analizę dostępnych platform automatyki domowej, protokołów komunikacyjnych i rozwiązań sprzętowych. Jako podstawę systemu wybrano Home Assistant ze względu na jego otwartość, filozofię lokalnego sterowania i bogaty ekosystem integracji. Protokół MQTT, obsługiwany przez broker Eclipse Mosquitto, okazał się optymalnym wyborem dla środowisk IoT dzięki minimalnemu narzutowi sieciowemu.
-
-*Implementacja infrastruktury serwerowej.* Zbudowano środowisko serwerowe oparte na systemie Debian, w którym za pomocą platformy Docker wdrożono broker MQTT Mosquitto oraz platformę Home Assistant. Konteneryzacja usług zapewniła izolację komponentów, uproszczoną procedurę aktualizacji i odtwarzalność środowiska.
-
-*Implementacja oprogramowania węzłów IoT.* Opracowano firmware dla dwóch klas urządzeń opartych na mikrokontrolerach ESP32:
-- *Node-1* -- węzeł sensorowy, który cyklicznie generuje i publikuje dane telemetryczne w formacie JSON na broker MQTT, gdzie są natychmiast wizualizowane w panelu Home Assistant.
-- *Node-2* -- węzeł wykonawczy oparty na mikrokontrolerze ESP32-C3, implementujący pełną separację tematów poleceń i stanu (command/state) oraz potwierdzanie wykonania operacji, co eliminuje błędy typu _ghost switching_.
-
-*Weryfikacja integracji.* Potwierdzono poprawny przepływ danych we wszystkich warstwach systemu, od mikrokontrolera poprzez broker MQTT aż do encji i automatyzacji w Home Assistant.
+Praca dyplomowa była poświęcona zaprojektowaniu, implementacji i weryfikacji bezpieczeństwa serwerowego systemu automatyki domowej opartego na mikrokontrolerach ESP oraz protokole MQTT, zintegrowanego z platformą Home Assistant. Potwierdzono poprawny przepływ danych we wszystkich warstwach systemu, od mikrokontrolera poprzez broker MQTT aż do encji i automatyzacji w Home Assistant.
 
 == Wnioski z badań bezpieczeństwa
 

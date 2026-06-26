@@ -1,10 +1,10 @@
 === Uruchomienie brokera MQTT Mosquitto w kontenerze Docker
 
-Kolejnym kluczowym elementem infrastruktury jest broker MQTT (Message Queuing Telemetry Transport), który pełni rolę centralnego węzła komunikacyjnego w systemie automatyki budynkowej. Wybrano oprogramowanie Eclipse Mosquitto ze względu na jego lekkość, wysoką wydajność oraz pełną zgodność ze standardem MQTT.
+Kolejnym kluczowym elementem infrastruktury jest broker MQTT, który pełni rolę centralnego węzła komunikacyjnego w systemie automatyki budynkowej. Wybrano oprogramowanie Eclipse Mosquitto ze względu na jego lekkość, wysoką wydajność oraz pełną zgodność ze standardem MQTT.
 
 ==== Przygotowanie struktury katalogów
 
-Zgodnie z dobrą praktyką zarządzania kontenerami, dla usługi brokera utworzono dedykowany katalog roboczy `~/mqtt`, w którym przechowywane są pliki konfiguracyjne oraz dane trwałe (persistence). Pozwala to na separację danych aplikacji od samego obrazu kontenera.
+Zgodnie z dobrą praktyką zarządzania kontenerami, dla usługi brokera utworzono dedykowany katalog roboczy `~/mqtt`, w którym przechowywane są pliki konfiguracyjne oraz dane trwałe. Pozwala to na separację danych aplikacji od samego obrazu kontenera.
 
 ```bash
 mkdir -p ~/mqtt/config ~/mqtt/data ~/mqtt/log
@@ -29,7 +29,7 @@ Powyższa konfiguracja włącza trwałość danych (zachowywanie stanu subskrypc
 
 ==== Definicja usługi Docker Compose
 
-Do uruchomienia brokera wykorzystano narzędzie Docker Compose, co pozwala na deklaratywne zdefiniowanie parametrów kontenera. Plik `docker-compose.yml` został skonfigurowany w następujący sposób:
+Do uruchomienia brokera wykorzystano narzędzie Docker Compose. Plik `docker-compose.yml` został skonfigurowany w następujący sposób:
 
 ```yaml
 version: '3.8'

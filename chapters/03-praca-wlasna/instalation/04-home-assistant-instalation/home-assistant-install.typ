@@ -1,7 +1,7 @@
 === Instalacja i konfiguracja platformy Home Assistant
 <sec:home-assistant-installation>
 
-Ostatnim etapem budowy fundamentów infrastruktury serwerowej było wdrożenie platformy Home Assistant. Jest to oprogramowanie służące do centralnego zarządzania automatyką domową, które potrafi integrować tysiące urządzeń od różnych producentów w ramach jednego, spójnego interfejsu.
+Ostatnim etapem budowy fundamentów infrastruktury serwerowej było wdrożenie platformy Home Assistant. Jest to oprogramowanie służące do centralnego zarządzania automatyką domową, które potrafi integrować wiele urządzeń od różnych producentów w jednym, spójnym interfejsie.
 
 ==== Wybór metody instalacji
 
