@@ -33,7 +33,7 @@ Proces obsługi polecenia przez Node-2 przebiega w następujących sposób:
 
 ==== Automatyzacja i zcentralizowane zarządzanie stanem
 
-W zaimplementowanej architekturze modularnej kluczowym aspektem jest zcentralizowane sterowanie logiką systemu. Zamiast bezpośredniej komunikacji między węzłem czujnika a węzłem wykonawczym, oba moduły komunikują się wyłącznie za pośrednictwem systemu Home Assistant poprzez protokół MQTT. Home Assistant pełni tutaj rolę jedynego źródła prawdy , co pozwala na zachowanie spójności stanu całego systemu.
+W zaimplementowanej architekturze modularnej kluczowym aspektem jest zcentralizowane sterowanie logiką systemu. Zamiast bezpośredniej komunikacji między węzłem czujnika a węzłem wykonawczym, oba moduły komunikują się wyłącznie za pośrednictwem systemu Home Assistant poprzez protokół MQTT. Home Assistant pełni tutaj rolę jedynego źródła prawdy, co pozwala na zachowanie spójności stanu całego systemu.
 
 Przepływ danych i logiki sterowania odbywa się w następujący sposób:
 1. *Publikacja danych:* Węzeł czujnika (*Node-1*) publikuje odczyty temperatury na temat MQTT `esp32/sensor/temperature`.
